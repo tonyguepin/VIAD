@@ -1,0 +1,36 @@
+.ui-slider {
+	position: relative;
+	display: block;
+	height:4px;
+	background:#666;
+	margin-left:13px;
+	margin-right:13px;
+
+}
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	
+	z-index: 2;
+	width: 26px;
+	border-radius:9px;
+	font-size:10px;
+	height:18px;
+	text-align:center;
+	line-height:18px;
+	top:-6px;
+	transform:translateX(-13px);
+	cursor: pointer;
+	background:white;
+	color:#666;
+
+}
+.ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	font-size: .7em;
+	display: block;
+	border: 0;
+	background-position: 0 0;
+	background: #00ADEF;
+	height:4px;
+}
