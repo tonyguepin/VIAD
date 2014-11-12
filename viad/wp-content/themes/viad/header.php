@@ -34,6 +34,9 @@
         <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/responsive.css">
         <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/jquery-ui-custom.css">
         <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/main.css">
+        <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/custom.css">
+        <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/forms.css">
+        <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/dashboard.css">
 
 	    <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/essential-regular-styles.css">
         
@@ -57,6 +60,7 @@
 	$user_meta = get_user_meta($user->ID);
 	
 	// Pages background pic
+/*
 	if($post->post_type == 'professionals' && is_singular('professionals') || $post->post_type == 'companies' && is_singular('companies')) {
 		$post_meta = get_post_meta($post->ID);
 		$bg_pic = wp_get_attachment_image_src( $post_meta['background_pic'][0], 'full');
@@ -89,7 +93,6 @@
 	
 	}
 	
-	$class = array('professionals' => 'blue');
 	
 	$c = $class[$post->post_type];
 
@@ -99,27 +102,25 @@
 	}
 	
 	if(!$bg_pic[0]) {
-		$bg_pic[0] = 'http://preview.viad.nl/wp-content/uploads/placeholder.jpg';
-	}
+*/
+
+	$bg_pic[0] = 'http://preview.viad.nl/wp-content/uploads/placeholder.jpg';
+/* 	} */
 
 ?>
+
+	<?php
+	if ( is_user_logged_in() ) {
+		$class = 'logged-in';			
+	}
+	?>
+		<div class="user-info <?php echo $class ?>">
+		<?php echo viad_display_user_info(); ?>
+		</div>	
+
 	<header style="background-image:url(<? echo $bg_pic[0]; ?>)" class="background_pic">
 
-
-
-		<div class="user-info-container">
-		<?php
-		if ( is_user_logged_in() ) {
-			$class = 'logged-in';			
-		}
-		?>
-			<aside class="user-info <?php echo $class ?>">
-			<?php echo viad_display_user_info(); ?>
-			</aside>	
-		</div>
-
-
-		<div class="overlay <?php echo $c; ?>"></div>
+		<div class="overlay blue"></div>
 
 
  		<div class="container">
@@ -139,11 +140,9 @@
 			</nav>
  		</div>
 
-		<div class="search">
 		<?php
 		echo viad_display_searchbar();
 		?>
-		</div>
 
 		<input id="id" type="hidden" data-id="<?php echo $post->ID; ?>"/>
 	</header>

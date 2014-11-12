@@ -231,14 +231,15 @@ add_filter('wp_login_failed', 'viad_login_failed');
 
 
 function viad_check_login($r, $d, $user) {
+
 	$p_id = get_user_meta($user->ID,'profile_id');
 	$profile_meta = get_post_meta($p_id[0], 'status');
 	
-	if($profile_meta['status'][0] == 'draft') {
-		wp_redirect(get_permalink($p_id[0]).'#/edit-profile');
-	} else {
-		wp_redirect(get_permalink($p_id[0]).'#/dashboard');
-	}
+//	if($profile_meta['status'][0] == 'draft') {
+//		wp_redirect(get_permalink($p_id[0]).'#/edit-profile');
+//	} else {
+		wp_redirect(get_permalink($p_id[0]));
+//	}
 }
 
 add_filter( 'login_redirect', 'viad_check_login', 10, 3 );

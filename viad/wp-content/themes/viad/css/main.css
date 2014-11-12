@@ -34,8 +34,8 @@ textarea {
 textarea, input { outline: none; }
 
 html {
-    font-size: 1em;
-    line-height: 1.4;
+	font-size:80%;
+    line-height: 1.5;
 	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
 	font-weight: 400; 
 	font-style: normal;	
@@ -150,7 +150,7 @@ a.button, input[type="submit"] {
 	font-size: smaller;
 	text-transform: uppercase;
 	line-height: 20px;
-  	transition: background-color 0.5s ease;
+  	transition: background-color 0.2s ease;
 }
 a.button:hover, input[type="submit"]:hover {
 	cursor:pointer;
@@ -163,7 +163,7 @@ a.button:hover, input[type="submit"]:hover {
 }
 
 .button.gray {
-	background:#555;
+	background:#666;
 }
 
 input[type="submit"] {
@@ -264,7 +264,7 @@ a.logo-svg:hover svg.blue g {
    ========================================================================== */
 
 header {
-	height:520px;
+	height:400px;
 	position: relative;
 	background-size:cover;
 	background-position:center center;	
@@ -337,28 +337,29 @@ div.container {
 	z-index:0;
 	position: relative;
 	min-height:100%;
+	overflow:hidden;
 }
 
 header {
 
 }
 
-header div.search {
+
+.page header div.search {
  	position: absolute;
 	background:rgba(255,255,255,0.8);
 	width:100%;
-	height:160px;
-	top:100px;
+	height:120px;
+	top:280px;
 	z-index: 1;
-}
 
-.page header div.search {
-	top:360px;
 }
 
 aside {
+/*
 	width:200px;
 	float: right;
+*/
 }
 
 section {
@@ -420,36 +421,37 @@ section.collapsed .gradient i {
    HEADER USERINFO
    ========================================================================== */
    
-.user-info-container {
-	width:1080px;
-	margin:0px auto;
-	position: relative;
-}   
    
-aside.user-info {
-
-	position:absolute;
-	right:0px;
+.user-info {
+	position:fixed;
+	right:20px;
+	top:20px;
 	z-index: 10;
-
+	background: red;
+	padding:10px;
+	background: rgba(51,51,51,0.3);
+	
 }   
    
-aside.user-info.logged-in {
+.user-info.logged-in {
 	overflow:hidden;
-	height:50px;
-	-webkit-transition: height 0.2s ease;
-	transition: height 0.2s ease;	
+	height:40px;
+	-webkit-transition: all 0.5s ease;
+	transition: all 0.5s ease;	
+	
 }
-aside.user-info.logged-in:hover {
-	height:300px;
+.user-info.logged-in:hover {
+	height:100px;
+	background: rgba(51,51,51,0.8);
+
 }
 
    
-aside.user-info p{
+.user-info p{
 	margin:10px;
 }   
 
-aside.user-info input[type="text"],aside.user-info input[type="password"] {
+.user-info input[type="text"],.user-info input[type="password"] {
 	width:170px;
 	border:none;
 	background:#f1f1f3;
@@ -457,16 +459,12 @@ aside.user-info input[type="text"],aside.user-info input[type="password"] {
 	font-family: 'Gotham SSm A', 'Gotham SSm B'; font-weight: 400; font-style: normal;
 	color:#555;	
 }   
-aside.user-info input[type="submit"] {
+.user-info input[type="submit"] {
 	width:100%;
 }
    
-aside.user-info {
-	background:white;
-	margin-top:25px;
-}   
 
-aside.user-info .thumb {
+.user-info .thumb {
 	width:30px;
 	height:30px;
 	border-radius:100%;
@@ -477,24 +475,23 @@ aside.user-info .thumb {
 }
 
 
-aside.user-info .title{
-	background:#f2f2f2;
+.user-info .title{
 	padding:5px;
-	color:#888;
+	color:white;
 }
-aside.user-info h4{
+.user-info h4{
 	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
 	font-weight: 700; 
 	font-style: normal;
  	margin:0px;
  	font-weight: normal;
 }
-aside.user-info h5{
+.user-info h5{
  	margin:0px;
  	font-weight: normal;
 
 }
-aside.user-info .msg-count {
+.user-info .msg-count {
 	position: absolute;
 	background:red;
 	color:white;
@@ -510,7 +507,7 @@ aside.user-info .msg-count {
 	border-radius:100%;
 
 }
-aside.user-info ul {
+.user-info ul {
 	list-style: none;
 	padding:0px;
 	margin:10px;
@@ -519,7 +516,7 @@ aside.user-info ul {
 }
 
 
-aside.user-info a:link li, aside.user-info a:visited li{
+.user-info a:link li, .user-info a:visited li{
 	width:90px;
 	height:90px;
 	float:left;
@@ -530,11 +527,11 @@ aside.user-info a:link li, aside.user-info a:visited li{
 	-webkit-transition: color 0.2s ease;
 	transition: color 0.2s ease;
 }
-aside.user-info a:hover li, aside.user-info a:visited:hover li{
+.user-info a:hover li, .user-info a:visited:hover li{
 	color:#00adef;
 }
 
-aside.user-info .icon {
+.user-info .icon {
 	clear:both;
 	font-size:36px;
 	height:30px;
@@ -675,181 +672,6 @@ aside h2 {
 	width:200px;
 }
 
-/* ==========================================================================
-   DASHBOARD / WIDGETS
-   ========================================================================== */
-   
-h3.widget-title {
-	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-	font-weight: 700; 
-	font-style: normal;
-	font-weight:normal;
-	background:#00adef; 
-	color:white;
-	font-size:16px;
-	padding:5px;
-}
-div.notification-count {
-	background: white;
-	color:#00adef;
-	width:32px;
-	text-align: center;
-	border-radius:22px;
-	float:right;
-}
-div.notification-count.red {
-	background: red;
-	color:white;
-}
-
-.third a{
-/* 	color:#555;	 */
-}
-   
-   
-ul.messages, ul.favorites, ul.jobs, ul.widget{
-	list-style: none;
-	padding:0px;
-	overflow:hidden;
-}
-
-li.message.unread{
-	background:#DFF1F7;
-
-}
-
-li.message {
-	font-size:12px;
-	background: white;
-	-webkit-transition: all 0.2s ease;
-	transition: all 0.2s ease;	
-	overflow:hidden;
-
-}
-
-li.message.all {
-	height:auto;
-}
-
-a.msg-title:link,a.msg-title:visited {
-	color:#00adef;
-	text-decoration: none;
-}
-
-a.msg-from:link,a.msg-from:visited {
-	color:#555;
-	text-decoration: none;
-}
-
-.msg-text {
-	opacity:0;
-	margin-left:45px;
-}
-
-
-li.message, li.favorite, li.job, li.professional, ul.widget li{
-/*  	height:60px; */
-	width:calc(100%-20px);
-	border-bottom:1px solid #ccc;
-	padding:10px;
-	position: relative;
-	display: block;
-	clear:both;
-
-}
-li.message {
-	height:60px;
-}
-li.favorite, ul.widget li {
-	display: block;
-	clear:both;
-}
-ul.widget li.gray {
-	background:#f1f1f1;
-}
-ul.widget li.job {
-}
-ul.widget li.job a {
-/*
-	float:left;
-	clear:both;
-*/
-}
-
-.message .thumb, .favorite .thumb, .job .thumb, .professional .thumb, ul.widget li .thumb{   
-	width:40px;
-	height:40px;
-	margin-right:10px;
-	border-radius:100%;
-	float:left;
-	background-size:cover;
-	background-position:center center;
-	margin-bottom: 10px;		
-}
-
-
-
-.message span, .favorite span, .job span, .professional, ul.widget span{
-	font-size:12px;
-	float:left;
-	clear:both;
-	
-}  
-
-.favorite a:link,.favorite a:visited,
-.job a:link,.job a:visited,
-.professional a:link,.professional a:visited,
-ul.widget a:link, ul.widget a:visited {
-	color:#555;
-	text-decoration: none;
-} 
-.favorite a:hover,.favorite a:visited:hover,
-.job a:hover,.job a:visited:hover,
-.professional a:hover,.professional a:visited:hover,
-ul.widget a:hover, ul.widget a:visited:hover {
-	color:#00adef;
-} 
-
-.favorite .svg-star {
-	right:0px;
-	position:absolute;
-	width:22px;
-	height: 22px;
-	margin-right:5px;
-	
-}
-.favorite .svg-star .circle{
-	fill:#f2f2f2;
-}
-.favorite .svg-arrow, .job .svg-arrow {
-	width:22px;
-	height:22px;
-	position: absolute;
-	right:0px;
-	bottom:5px;
-	margin-right:5px;
-
-}
-
-.favorite .svg-arrow .circle,
-.job .svg-arrow .circle {
-	fill:#f2f2f2;
-}
-.favorite .svg-arrow .arrow,
-.job .svg-arrow .arrow {
-
-	fill:#00adef;
-}
-
-.favorite .icon,
-.job .icon, ul.widget .icon {
-	float:left;
-	font-size: 14px;
-	margin-right:3px;
-	margin-top:-1px;
-	color:#00adef;
-}
-
    
 /* ==========================================================================
    EDITOR / WIDGET-EDIT
@@ -877,36 +699,6 @@ ul.widget a:hover, ul.widget a:visited:hover {
 }
 */
 
-
-input[type="text"], input[type="password"], input[type="email"] {
-	float:left;
- 	clear: both;
- 	margin-bottom:15px;
- 	width:calc(100% - 22px);
-	padding:10px;
-	border:1px solid #CCC;
-	font-family: 'Gotham SSm A', 'Gotham SSm B'; font-weight: 400; font-style: normal;
-	background:#F2F2F2;	
-}
-
-
-::-webkit-input-placeholder {
-   color: #555;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   color: #555;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   color: #555;
-}
-
-:-ms-input-placeholder {  
-   color: #555;
-}
-
-
 .project_pic {
 	width:180px;
 	height:90px;
@@ -915,55 +707,6 @@ input[type="text"], input[type="password"], input[type="email"] {
 	background-position: center center;
 	background-size:cover;
 }
-label {
- 	padding:5px; 
-}
-
-
-input[type=radio],
-input[type='checkbox'] {
-  display: none;
-}
-input[type=radio] + label {
-  display: block;
-}
-input[type='checkbox'] + label:before,
-input[type='radio'] + label:before {
-  display: block;
-  font-family: "essential-regular";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
-  margin-top: -3px;
-  margin-left:-30px;
-  
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  position: absolute;
-  
-}
-input[type="checkbox"]:checked /* + label:before */ {
-  padding-right: 6px;
-}
-input[type=radio] + label:before {
-  content: "y"; /* Radio Unchecked */
-  color:#555;
-}
-input[type=radio]:checked + label:before {
-  content: "u"; /* Radio Checked */
-  color:#555;
-}
-input[type="checkbox"] + label:before {
-  content: "x"; /* Checkbox Unchecked */
-  color:#555;
-
-}
-input[type="checkbox"]:checked + label:before {
-  content: "v"; /* Checkbox Checked */
-  color:#555;
-
-}
-
 /*
 EDIT PROFILE
 */
@@ -1097,21 +840,22 @@ EDIT PROFILE
    ========================================================================== */
 
 section.profile-head {
-	margin-top:-160px;
+	margin-top:-200px;
 }
 
 
 section.profile-head .thumbnail {
-	width:160px;
-	height:160px;
+	width:198px;
+	height:198px;
+	border:1px solid #666;
 	background: black;
 	background-position: center center;
 	background-size:cover;
 }
 
 section.profile-head .title {
-	margin-top: -85px;
-	margin-left:185px;
+ 	margin-top: -85px; 
+	margin-left:220px;
 	height:60px;
 	margin-bottom:25px;
 	color:white;
@@ -1345,47 +1089,6 @@ li.review .thumb {
 }
 
 /* ==========================================================================
-   Register
-   ========================================================================== */
-section.register .radio {
-	float:left;
- 	clear: both;
-}
-
-input.empty {
-	border-bottom: 2px dashed red;
-}
-
-section.register p {
-	clear:both;
-}
-
-section.register fieldset {
-	max-width:500px;
-	margin:0 auto;
-	padding-right:20px;
-	
-	-webkit-transition: opacity 1.2s ease;
-	transition: opacity 1.2s ease;	
-/*
-	opacity: 0.0;
-	display: none;
-	height:0;
-*/
-
-}
-section.register fieldset.visible {
-	opacity: 1.0;
-	display: block;	
-	height:auto;
-
-}
-
-section.register fieldset .radio {
-	margin-left:30px;
-}
-
-/* ==========================================================================
    PROJECTS OVERVIEW + SEARCH
    ========================================================================== */
 .search-bar input.search {
@@ -1405,7 +1108,7 @@ section.register fieldset .radio {
 aside.filter {
 	background:#444;
 	width:176px;
-	padding:20px;
+	padding:10px;
 	float:left;
 	font-size:12px;
 	color:white;
@@ -1438,7 +1141,7 @@ aside.filter li {
 	position:relative;
 	background: #666666;
 	line-height: 30px;
-  	transition: all 0.5s ease;
+  	transition: all 0.2s ease;
   	overflow:hidden;
 }
 
@@ -1509,7 +1212,7 @@ aside.filter .more-categories {
   -moz-osx-font-smoothing: grayscale;
   position: absolute;
   right:8px;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
   
 }
 aside.filter .more-categories.rotate {

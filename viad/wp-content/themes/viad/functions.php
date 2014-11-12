@@ -19,24 +19,51 @@ function viad_get_attachment_image_src($id, $size) {
 	return $img;
 }
 
+/*
+	$html .= '<a href="#/notificaties">Notificaties</a><br/>';
+	$html .= '<a href="#/reviews">Reviews</a><br/>';
+	$html .= '<a href="#/projecten">Mijn projecten</a><br/>';
+	$html .= '<a href="#/favorieten">Mijn favorieten</a><br/>';
+	$html .= '<a href="#/instellingen">Mijn favorieten</a><br/>';
+	$html .= '<a href="#/bewerken">Profiel bewerken</a><br/>';
+	
+*/
 function viad_load_content() {
 	$hash = $_REQUEST['hash'];
 	$user_type = viad_get_user_type();
 	$update = array();
 	
-	if($hash == 'dashboard') {
-		$update[0]['container'] = 'section.profile.content';
-		if($user_type == 'professionals') {
-			$update[0]['html'] = viad_display_professionals_db();
-		} else if($user_type == 'companies'){
-			$update[0]['html'] = viad_display_companies_db();
-		}
-	} else if($hash == 'notificaties') {
 	
-		$update[0]['container'] = 'section.profile.content';
-		$update[0]['html'] = viad_all_messages();
-			
+	if($hash == 'dashboard') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_main();
+	} else if($hash == 'notificaties') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_notifications();
+	} else if($hash == 'reviews') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_reviews();
+	} else if($hash == 'projecten') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_projects();
+	} else if($hash == 'favorieten') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_favorites();
+	} else if($hash == 'instellingen') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_prefs();
+	} else if($hash == 'bewerken') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_edit_profile();
+	} else if($hash == 'betalen') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_payment();
 	}
+
+	$update[1]['container'] = 'aside.left';
+	$update[1]['html'] = viad_db_nav();
+
+
 	
 	echo json_encode($update);	
 	exit();

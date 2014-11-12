@@ -217,8 +217,8 @@ function viad_display_profile_head($id) {
 	$html .= '<div class="container">';
 	$html .= '	<div class="thumbnail profile_pic" style="background-image:url('.$thumb[0].');"></div>';
 	$html .= '  <div class="title">';
+
 	$html .= '		<h2>'.$title.'</h2>';
-	
 	$html .= '		<h3>'.$subtitle.'</h3>';
 	
 	$html .= '	</div>';
@@ -246,7 +246,9 @@ function viad_content($c) {
 function viad_display_searchbar() {
 
 	if(is_archive()) {
-		$html =  '<div class="container">';
+		$html =	'<div class="search">';
+
+		$html .=  '<div class="container">';
 		
 		$html .= '<h2>Zoeken</h2>';
 		$html .= '<div class="search-bar">';
@@ -254,6 +256,8 @@ function viad_display_searchbar() {
 		$html .= '<a href="#" class="button search-button">Zoeken</a>';		
 		$html .= '</div>';	
 		$html .= '</div>';	
+		$html .= '</div>';	
+
 	}
 	return $html;
 }
@@ -519,22 +523,18 @@ function viad_display_user_info() {
 			$tags = reset($tags);
 		}
 		
-		
 		$messages = get_posts(array('post_type' => 'messages', 'author' => $user->ID, 'meta_key' => 'read','meta_value'=> 0, 'posts_per_page' => -1));
 		
 		$msg_count = count($messages);
 		$html .= '<input class="user_logged_in" type="hidden" />';
 		$html .= '<div class="title">';
-		
 
 		if($msg_count) {
 			$html .= '<div class="msg-count">'.$msg_count.'</div>';
 		}
 
 		$html .= '<div class="thumb profile_pic" style="background-image:url('.$thumb[0].');"></div>';
-	 	$html .= '<h4>'.$user_meta['full_name'][0].'</h4>';
-	 	
-	 	
+	 	$html .= '<h4><a href="'.get_permalink(viad_get_profile_id()).'">'.$user_meta['full_name'][0].'</a></h4>';
 		if($tags->name) {
 			$html .= '		<h5>'.$tags->name.'</h5>';
 		} else {
@@ -542,18 +542,14 @@ function viad_display_user_info() {
 		}	 	
 	 	$html .= '</div>';
 	 	
-	 	
-	 	
-	 	$html .= '<ul>';
-	 	$html .= '<a href="'.get_permalink($profile->ID).'#/dashboard" ><li><div class="icon icon-essential-regular-41-home"></div><br/>Dashboard</li></a>';
-	 	$html .= '<a href="'.get_permalink($profile->ID).'"><li><div class="icon icon-essential-regular-45-user"></div><br/>Profiel</li></a>';
-	 	$html .= '<a href="'.home_url().'"><li><div class="icon icon-essential-regular-95-folder"></div></i><br/>Opdrachten</li></a>';
-	 	$html .= '<a href="'.home_url().'#/all-messages"><li><div class="icon icon-essential-regular-27-envelope"></div><br/>Notificaties</li></a>';
-	 	$html .= '</ul>';
-
 	 	if($_POST['self']) {
-	 		$html .= '<form style="display:none;" id="switch'.$_POST['self'].'" method="post" action="/viad-trunk/viad/"><input type="hidden" name="as" value="'.$_POST['self'].'"></form>';
-			$html .= '<a class="button switch" href="#" data-switch-to="'.$_POST['self'].'">Terug</a>';
+/* 	 	
+
+	switch terug naar eigen profiel 
+
+*/
+//	 		$html .= '<form style="display:none;" id="switch'.$_POST['self'].'" method="post" action="/viad-trunk/viad/"><input type="hidden" name="as" value="'.$_POST['self'].'"></form>';
+//			$html .= '<a class="button switch" href="#" data-switch-to="'.$_POST['self'].'">Terug</a>';
 	 	} else {
 			$html .= '<a class="button" href="'.wp_logout_url(home_url()).'" title="Logout">Logout</a>';
 	 	}

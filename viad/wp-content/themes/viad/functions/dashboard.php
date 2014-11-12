@@ -1,24 +1,38 @@
 <?php
 
-function viad_all_messages() {
+function viad_db_main() {
+	$html .= '<h2>Dashboard main</h2>';
+	return $html;
+}
+function viad_db_payment() {
+	$html .= '<h2>Betalen</h2>';
+	return $html;
+}
+function viad_db_reviews() {
+	$html .= '<h2>Reviews</h2>';
+	return $html;
+}
+function viad_db_projects() {
+	$html .= '<h2>Mijn projecten</h2>';
+	return $html;
+}
+function viad_db_favorites() {
+	$html .= '<h2>Mijn favorieten</h2>';
+	return $html;
+}
+function viad_db_prefs() {
+	$html .= '<h2>Instellingen</h2>';
+	return $html;
+}
+function viad_db_edit_profile() {
+	$html .= '<h2>Profiel bewerken</h2>';
+	return $html;
+}
 
-	$html .= '<div class="container">';
+function viad_db_notifications() {
+	$html .= '<h2>Notificaties</h2>';
 	
-	$html .= '<h2>Dashboard</h2>';
-
-	$html .= '<div class="third messages-widget">';
-	$html .= '<h3 class="widget-title">Instellingen voor notificaties hier?</h3>';
-	$html .= '<a href="'.home_url().'" class="button">Terug</a>';
-//	$html .= viad_notifications_widget();
-	$html .= '</div>';
-
-
-	$html .= '<div class="two-third">';
-	$html .= '<h3 class="widget-title">Alle notificaties</h3>';
-
-
 	$messages = get_posts(array('post_type' => 'messages', 'author' => get_current_user_id(), 'posts_per_page' => -1));
-
 	if(count($messages) > 0) {
 		$html .= '<ul class="all-messages">';
 		foreach($messages as $m) {
@@ -42,16 +56,29 @@ function viad_all_messages() {
 	} else {
 		$html .= '<p>Geen berichten gevonden</p>';	
 	}	
-
-
-	$html .= '</div>';
-
-
-
-	$html .= '</div>';
+	
+	
 	return $html;
+
 }
 
+function viad_db_nav() {
+
+	$html .= '<a class="button gray" href="'.get_permalink(viad_get_profile_id()).'">Profiel</a>';
+
+	$html .= '<ul class="tab-menu">';
+	$html .= '<li><a href="#/dashboard"><div class="icon">]</div>Dashboard</span></li>';
+	$html .= '<li><a href="#/notificaties"><div class="icon">]</div>Notificaties</a></li>';
+	$html .= '<li><a href="#/reviews"><div class="icon">]</div>Reviews</a></li>';
+	$html .= '<li><a href="#/projecten"><div class="icon">]</div>Mijn projecten</a></li>';
+	$html .= '<li><a href="#/favorieten"><div class="icon">]</div>Mijn favorieten</a></li>';
+	$html .= '<li><a href="#/instellingen"><div class="icon">]</div>Mijn favorieten</a></li>';
+	$html .= '<li><a href="#/bewerken"><div class="icon">]</div>Profiel bewerken</a></li>';
+	$html .= '<li><a href="#/betalen"><div class="icon">]</div>Betalen</a></li>';
+	$html .= '</ul>';
+
+	return $html;
+}
 
 function viad_read_message() {
 	update_post_meta($_REQUEST['msg_id'],'read',1);
@@ -59,43 +86,21 @@ function viad_read_message() {
 }
 add_action( 'wp_ajax_viad_read_message', 'viad_read_message' );
 
+/*
 function viad_display_professionals_db() {
 	
 	$html .= '<div class="container">';
-	
-	$html .= '<h2>Dashboard</h2>';
-
-	$html .= '<div class="third messages-widget">';
-	$html .= viad_notifications_widget();
+	$html .= '<aside class="left">';
+	$html .= 'dashboard left<br/>';
+	$html .= '</aside>';
+	$html .= '<div class="content">';
+	$html .= viad_db_main();
 	$html .= '</div>';
-
-
-	$html .= '<div class="third favorites-widget">';
-	$html .= viad_favorites_widget();
-	$html .= '</div>';
-
-
-	$html .= '<div class="third">';
-	$html .= viad_jobs_widget();
-	$html .= '</div>';
-
-
-	$html .= '<div class="third">';
-	$html .= viad_spotlight_widget();
-	$html .= '</div>';
-
-
-	$html .= '<div class="third">';
-	$html .= viad_prefs_widget();
-	$html .= '</div>';
-
-
-	$html .= '</div>';
-	
 	
 	return $html;
 
 }
+*/
 
 function viad_display_companies_db() {
 	
