@@ -3,7 +3,7 @@
 </section>
 
 
-<section class="dashboard main">
+<section class="dashboard main"> DASHBOARD
 		
 	<?php	echo viad_display_professionals_db(); ?>
 

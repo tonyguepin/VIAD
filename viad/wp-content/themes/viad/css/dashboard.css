@@ -1,0 +1,292 @@
+/* content */
+
+.content {
+	float:left;
+	width:860px;
+}
+
+
+.content p {
+	font-size:1em;
+	width:640px;
+}
+
+
+/* PROFILE */
+
+
+.profile .left a.button:hover, .profile .left a.button:visited:hover {
+	background:#00ADEF;
+} 
+
+.profile .content h2 {
+	color:#00ADEF;
+	font-weight:normal;
+	text-transform: none;
+	text-align: left;
+}
+
+
+/*
+.profile a.button.selected {
+	background:white;
+	color:#00ADEF !important;
+	margin-right:0px;
+	width:200px;
+}
+*/
+
+
+/* ASIDE LEFT*/
+
+
+aside.left {
+	background:#444;
+	width:200px;
+	float:left;
+	font-size:1em;
+	color:white;
+	margin-right:20px;
+	margin-bottom: -5000px;
+  	padding-bottom: 5000px;	
+}   
+
+aside.left h3 {
+	text-transform: uppercase;
+	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
+	font-weight: 700; 
+	font-style: normal;
+	margin:10px;
+
+}
+aside.left ul {
+	list-style: none;
+	padding:0;
+	margin:10px;
+
+}
+
+aside.left li {
+	height:10px;
+	position:relative;
+	background: #666;
+	padding:10px;
+	line-height: 10px;
+  	transition: all 0.2s ease;
+  	overflow:hidden;
+}
+
+aside.left ul.tab-menu {
+	
+
+}
+
+aside.left ul.tab-menu li	{
+	padding:0px;
+	height:30px;
+	line-height:12px;	
+	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
+	font-weight: 700; 
+	font-style: normal;
+	margin-bottom:2px;
+
+}
+aside.left ul.tab-menu li a:link, aside.left ul.tab-menu li a:visited	{
+	color:white;
+	text-decoration: none;
+	padding:10px;
+	margin:0px;
+	width:100%;
+	display:block;
+  	transition: all 0.2s ease;
+}
+aside.left ul.tab-menu li a:hover, aside.left ul.tab-menu li a:visited:hover	{
+	background:#00adef;
+	color:white;
+}
+aside.left ul.tab-menu li a.selected {
+	background:#00adef;
+	color:white;
+}
+aside.left .icon {
+	font-family: "essential-regular";
+	font-size: 16px;
+	margin-top:-1px;
+	float:left;
+	width:22px;
+}
+/* Dashboard*/
+
+
+   
+h3.widget-title {
+	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
+	font-weight: 700; 
+	font-style: normal;
+	font-weight:normal;
+	background:#00adef; 
+	color:white;
+	font-size:16px;
+	padding:5px;
+}
+div.notification-count {
+	background: white;
+	color:#00adef;
+	width:32px;
+	text-align: center;
+	border-radius:22px;
+	float:right;
+}
+div.notification-count.red {
+	background: red;
+	color:white;
+}
+
+.third a{
+/* 	color:#555;	 */
+}
+   
+   
+ul.messages, ul.favorites, ul.jobs, ul.widget{
+	list-style: none;
+	padding:0px;
+	overflow:hidden;
+}
+
+li.message.unread{
+	background:#DFF1F7;
+
+}
+
+li.message {
+	font-size:12px;
+	background: white;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;	
+	overflow:hidden;
+
+}
+
+li.message.all {
+	height:auto;
+}
+
+a.msg-title:link,a.msg-title:visited {
+	color:#00adef;
+	text-decoration: none;
+}
+
+a.msg-from:link,a.msg-from:visited {
+	color:#555;
+	text-decoration: none;
+}
+
+.msg-text {
+	opacity:0;
+	margin-left:45px;
+}
+
+
+li.message, li.favorite, li.job, li.professional, ul.widget li{
+/*  	height:60px; */
+	width:calc(100%-20px);
+	border-bottom:1px solid #ccc;
+	padding:10px;
+	position: relative;
+	display: block;
+	clear:both;
+
+}
+li.message {
+	height:60px;
+}
+li.favorite, ul.widget li {
+	display: block;
+	clear:both;
+}
+ul.widget li.gray {
+	background:#f1f1f1;
+}
+ul.widget li.job {
+}
+ul.widget li.job a {
+/*
+	float:left;
+	clear:both;
+*/
+}
+
+.message .thumb, .favorite .thumb, .job .thumb, .professional .thumb, ul.widget li .thumb{   
+	width:40px;
+	height:40px;
+	margin-right:10px;
+	border-radius:100%;
+	float:left;
+	background-size:cover;
+	background-position:center center;
+	margin-bottom: 10px;		
+}
+
+
+
+.message span, .favorite span, .job span, .professional, ul.widget span{
+	font-size:12px;
+	float:left;
+	clear:both;
+	
+}  
+
+.favorite a:link,.favorite a:visited,
+.job a:link,.job a:visited,
+.professional a:link,.professional a:visited,
+ul.widget a:link, ul.widget a:visited {
+	color:#555;
+	text-decoration: none;
+} 
+.favorite a:hover,.favorite a:visited:hover,
+.job a:hover,.job a:visited:hover,
+.professional a:hover,.professional a:visited:hover,
+ul.widget a:hover, ul.widget a:visited:hover {
+	color:#00adef;
+} 
+
+.favorite .svg-star {
+	right:0px;
+	position:absolute;
+	width:22px;
+	height: 22px;
+	margin-right:5px;
+	
+}
+.favorite .svg-star .circle{
+	fill:#f2f2f2;
+}
+.favorite .svg-arrow, .job .svg-arrow {
+	width:22px;
+	height:22px;
+	position: absolute;
+	right:0px;
+	bottom:5px;
+	margin-right:5px;
+
+}
+
+.favorite .svg-arrow .circle,
+.job .svg-arrow .circle {
+	fill:#f2f2f2;
+}
+.favorite .svg-arrow .arrow,
+.job .svg-arrow .arrow {
+
+	fill:#00adef;
+}
+
+.favorite .icon,
+.job .icon, ul.widget .icon {
+	float:left;
+	font-size: 14px;
+	margin-right:3px;
+	margin-top:-1px;
+	color:#00adef;
+}
+

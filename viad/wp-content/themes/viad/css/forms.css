@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Global
+   ========================================================================== */
+
+
+::-webkit-input-placeholder {
+   color: #666;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #666;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #666;
+}
+
+:-ms-input-placeholder {  
+   color: #666;
+}
+
+label {
+ 	padding:5px; 
+}
+input[type=radio],
+input[type='checkbox'] {
+  display: none;
+}
+input[type=radio] + label {
+  display: block;
+}
+input[type='checkbox'] + label:before,
+input[type='radio'] + label:before {
+  display: block;
+  font-family: "essential-regular";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  margin-top: -3px;
+  margin-left:-30px;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+}
+input[type="checkbox"]:checked /* + label:before */ {
+  padding-right: 6px;
+}
+input[type=radio] + label:before {
+  content: "y"; /* Radio Unchecked */
+  color:#666;
+}
+input[type=radio]:checked + label:before {
+  content: "u"; /* Radio Checked */
+  color:#666;
+}
+input[type="checkbox"] + label:before {
+  content: "x"; /* Checkbox Unchecked */
+  color:#666;
+}
+input[type="checkbox"]:checked + label:before {
+  content: "v"; /* Checkbox Checked */
+  color:#666;
+
+}
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+	float:left;
+ 	clear: both;
+ 	margin-bottom:15px;
+ 	width:calc(100% - 22px);
+	padding:5px;
+	border:1px solid #CCC;
+	font-family: 'Gotham SSm A', 'Gotham SSm B'; font-weight: 400; font-style: normal;
+	background:#F2F2F2;	
+}
+/* ==========================================================================
+   Register
+   ========================================================================== */
+section.register fieldset .radio {
+	float:left;
+ 	clear: both;
+}
+
+input.empty {
+	border-bottom: 2px dashed red;
+}
+
+section.register fieldset p {
+	margin:0.5em 0;
+	font-size:1em;
+	clear:both;
+}
+
+section.register fieldset {
+	max-width:700px;
+	margin:0 auto;
+	padding-right:20px;
+	
+	-webkit-transition: opacity 1.2s ease;
+	transition: opacity 1.2s ease;	
+/*
+	opacity: 0.0;
+	display: none;
+	height:0;
+*/
+
+}
+
+section.register fieldset .name-wrapper {
+	width:190px;
+	float:left;
+
+}
+
+section.register fieldset .tussenvoegsel-wrapper {
+	width:120px;
+	float:left;
+
+}
+
+section.register fieldset .last_name-wrapper {
+	width:390px;
+	float:left;
+
+}
+
+section.register fieldset.visible {
+	opacity: 1.0;
+	display: block;	
+	height:auto;
+
+}
+
+section.register fieldset .radio {
+	margin-left:30px;
+}
