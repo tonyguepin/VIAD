@@ -1,6 +1,14 @@
+
+function screen_notification(text) {
+	
+	$('.user-info').css({height:200});			
+			
+		
+}
+
+
 $(document).ready(function() {
 		
-
 
 		//////////////////////
 		// BROWSE CALENDAR
@@ -39,9 +47,6 @@ $(document).ready(function() {
 			} else {
 				svg.attr("class", "svg-star blue");
 				
-				$('#melding'+$(this).data('id')).fadeIn(function() {
-					$(this).fadeOut();
-				});
 				
 			}
 
@@ -53,7 +58,9 @@ $(document).ready(function() {
 		            project_id: $(this).data('id')
 		        },
 		        success:function(json) {
-		        
+					
+					screen_notification('Toegevoegd aan favorieten');
+							        
 				//	$(json).each(function() {
 				//		$(this.container).html(this.html);
 				//	});		        

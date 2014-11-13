@@ -60,7 +60,7 @@
 
 
 
-	$bg_pic[0] = 'http://preview.viad.nl/wp-content/uploads/placeholder.jpg';
+	$bg_pic = viad_get_attachment_image_src(917,'full');
 
 
 	if ( is_user_logged_in() ) {
