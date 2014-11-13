@@ -2,6 +2,28 @@
 
 function viad_db_main() {
 	$html .= '<h2>Dashboard main</h2>';
+	
+	$user_id = get_current_user_id();
+	$user_meta = get_user_meta($user_id);
+	$html .= '<p style="margin-left:30px;">';
+	if(viad_user_in_spotlight($user_id)) {
+		$points = viad_spotlight_points_left($user_meta['spotlight_start'][0], $user_meta['spotlight_points'][0]);
+		$checked = 'checked="checked"';
+	} else {
+		$user_meta = get_user_meta($user_id);
+		$points = $user_meta['spotlight_points'][0];
+	}
+	$dagen = 'dagen';
+	if($points == 1) {
+		$dagen = 'dag';
+	}
+	if($points == 0) {
+		$html .= '<input id="i0" type="checkbox" '.$checked.' disabled class="toggle-spotlight"/><label for="i0">Je hebt helaas geen spotlight dagen over. <a href="#/betalen">Opwaarderen?</a></label>'; 
+	} else {
+		$html .= '<input id="i0" type="checkbox" '.$checked.' class="toggle-spotlight"/><label for="i0">Zet jezelf nog '.$points.' '.$dagen.' in de spotlight</label>'; 
+	}
+	$html .= '</p>';
+	
 	return $html;
 }
 function viad_db_payment() {
@@ -14,18 +36,136 @@ function viad_db_reviews() {
 }
 function viad_db_projects() {
 	$html .= '<h2>Mijn projecten</h2>';
+	
+	if(viad_get_user_type() == 'professionals') {
+		$profile_id = get_user_meta(get_current_user_id(),'profile_id');
+		$project_ids = get_post_meta($profile_id[0], 'subscribed');
+		$projects = get_posts(array('post__in' => $project_ids, 'post_type' => 'projects', 'posts_per_page' => -1));
+
+	} else if(viad_get_user_type() == 'companies') {
+		$projects = get_posts(array('author' => get_current_user_id(), 'post_type' => 'projects', 'posts_per_page' => -1));
+	}
+
+	if($projects) {
+		$html .= '<ul class="jobs">';
+		foreach($projects as $project) {
+			$project_meta = get_post_meta($project->ID);
+			$owner_meta = get_user_meta($project->post_author);
+
+			$thumb = wp_get_attachment_image_src( $owner_meta['profile_pic'][0], 'thumbnail');
+	
+			$html .= '<li class="project">';
+			$html .= '<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
+			$html .= '<a class="bold" href="'.get_permalink($job->ID).'">';
+			$html .= $project->post_title;
+			$html .= '</a>';
+			$html .= '<br/>';
+			$html .= '<a href="'.get_permalink($owner_meta['profile_id'][0]).'">'.$owner_meta['full_name'][0].'</a>';
+			$html .= '<br/>';
+			
+			$html .= '<span><div class="icon icon-essential-regular-86-clock"></div> '.date_i18n('j F Y', $project_meta['deadline'][0]).'</span>';
+			
+			$str = 'professionals';
+			if(count($project_meta['subscribed']) == 1 ) { 
+				$str = 'professional';
+			}
+			$html .= '<span><div class="icon icon-essential-regular-45-user"></div> '.count($project_meta['subscribed']).' '.$str.' ingeschreven</span>';
+			$html .= '<a href="'.get_permalink($project->ID).'">'.viad_arrow_svg('blue').'</a>';
+			$html .= '<br class="clear"/>';
+			$html .= '</li>';
+		}
+		
+		$html .= '</ul>';
+	} else {
+		$html .= '<p>Geen projecten gevonden</p>';
+	}	
+	
+	
 	return $html;
 }
 function viad_db_favorites() {
 	$html .= '<h2>Mijn favorieten</h2>';
+	
+	if(viad_get_favorites()) {
+		$favorites = get_posts(array('post__in' => viad_get_favorites(), 'post_type' => 'projects'));
+	
+		
+		$html .= '<ul class="favorites">';
+		
+		foreach($favorites as $fav) {
+			
+			$fav_meta = get_post_meta($fav->ID);
+			$project_meta = get_post_meta($fav->post_parent);
+			$owner_meta = get_user_meta($fav->post_author);
+			
+					
+			$thumb = wp_get_attachment_image_src( $owner_meta['profile_pic'][0], 'thumbnail');
+	
+			$html .= '<li class="favorite">';
+			$html .= '<a href="#" class="toggle-favorite" data-id="'.$fav->ID.'">'.viad_star_svg('blue').'</a>';
+			$html .= '<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
+			$html .= '<a class="bold" href="'.get_permalink($fav->ID).'">';
+			$html .= $fav->post_title;
+			$html .= '</a>';
+			$html .= '<br/>';
+			$html .= '<a href="'.get_permalink($owner_meta['profile_id'][0]).'">'.$owner_meta['full_name'][0].'</a>';
+			$html .= '<br/>';
+			
+			$str = 'professionals';
+			if(count($project_meta['subscribed']) ==1 ) { 
+				$str = 'professional';
+			}			
+
+			$html .= '<span><div class="icon icon-essential-regular-86-clock"></div> '.date_i18n('j F Y', $fav_meta['deadline'][0]).'</span>';
+			$html .= '<span><div class="icon icon-essential-regular-45-user"></div> '.count($fav_meta['subscribed']).' '.$str.' ingeschreven</span>';
+	
+			$html .= '<a href="'.get_permalink($fav->ID).'">'.viad_arrow_svg('blue').'</a>';
+	
+			$html .= '<br class="clear"/>';
+			
+			$html .= '</li>';
+			
+		}
+		$html .= '</ul>';
+
+	} else {
+		$html .= '<h3 class="widget-title">Mijn favorieten</h3>';
+		$html .= '<p>Geen favorieten gevonden</p>'	;
+	}	
 	return $html;
 }
 function viad_db_prefs() {
 	$html .= '<h2>Instellingen</h2>';
+	
+	$user = wp_get_current_user();
+	$user_meta = get_user_meta($user->ID);
+
+	$html .= '<p style="margin-left:30px;">';
+	if($user_meta['email_notifications'][0] == 1) {
+		$checked = 'checked="checked"';
+	}
+
+	$html .= '<input class="save" name="um_email_notifications" id="i1" type="checkbox" '.$checked.'/><label for="i1">Notificaties per email sturen</label>'; 
+	$html .= '</p>';
+	
+	$html .= '<p>Emailadres</p>';
+	$html .= '<input class="save" type="email" name="u_email" value="'.$user->user_email.'" />';
+
+	$html .= '<p>Nieuw wachtwoord (alleen als je het wachtwoord wilt wijzigen)</p>';
+	$html .= '<input class="save" type="password" name="u_password" />';
+	
+	$html .= '<p>Nieuw wachtwoord herhalen</p>';
+	$html .= '<input class="save" type="password" name="u_password_again" />';
+	$html .= '<br class="clear"/>';
+	$html .= '<a href="#" class="button save-prefs">Instellingen opslaan</a>';
+		
+	return $html;
+	
+	
 	return $html;
 }
 function viad_db_edit_profile() {
-	$html .= '<h2>Profiel bewerken</h2>';
+	$html = viad_display_edit_profile();
 	return $html;
 }
 
@@ -67,14 +207,20 @@ function viad_db_nav() {
 	$html .= '<a class="button gray" href="'.get_permalink(viad_get_profile_id()).'">Profiel</a>';
 
 	$html .= '<ul class="tab-menu">';
-	$html .= '<li><a href="#/dashboard"><div class="icon">]</div>Dashboard</span></li>';
-	$html .= '<li><a href="#/notificaties"><div class="icon">]</div>Notificaties</a></li>';
-	$html .= '<li><a href="#/reviews"><div class="icon">]</div>Reviews</a></li>';
-	$html .= '<li><a href="#/projecten"><div class="icon">]</div>Mijn projecten</a></li>';
-	$html .= '<li><a href="#/favorieten"><div class="icon">]</div>Mijn favorieten</a></li>';
-	$html .= '<li><a href="#/instellingen"><div class="icon">]</div>Mijn favorieten</a></li>';
-	$html .= '<li><a href="#/bewerken"><div class="icon">]</div>Profiel bewerken</a></li>';
-	$html .= '<li><a href="#/betalen"><div class="icon">]</div>Betalen</a></li>';
+	
+	
+	
+	$html .= '<li><a href="#/dashboard"><div class="icon">O</div>Dashboard</span></li>';
+	$html .= '<li><a href="#/notificaties"><div class="icon">:</div>Notificaties</a></li>';
+	$html .= '<li><a href="#/reviews"><div class="icon">&#xe001;</div>Reviews</a></li>';
+	$html .= '<li><a href="#/projecten"><div class="icon">&#xe000;</div>Mijn projecten</a></li>';
+	if(viad_get_user_type() == 'companies') {
+		$html .= '<li><a href="#/professionals"><div class="icon">[</div>Mijn professionals</a></li>';
+	}
+	$html .= '<li><a href="#/favorieten"><div class="icon">z</div>Mijn favorieten</a></li>';
+	$html .= '<li><a href="#/instellingen"><div class="icon">"</div>Instellingen</a></li>';
+	$html .= '<li><a href="#/bewerken"><div class="icon">P</div>Profiel bewerken</a></li>';
+	$html .= '<li><a href="#/betalen"><div class="icon">\</div>Betalen</a></li>';
 	$html .= '</ul>';
 
 	return $html;
@@ -160,6 +306,7 @@ function viad_save_prefs() {
 }
 add_action( 'wp_ajax_viad_save_prefs', 'viad_save_prefs' );
 
+/*
 function viad_prefs_widget() {
 	$html .= '<h3 class="widget-title">Instellingen</h3>';
 	
@@ -188,7 +335,9 @@ function viad_prefs_widget() {
 	return $html;
 	
 }
+*/
 
+/*
 function viad_spotlight_widget() {
 	$html .= '<h3 class="widget-title">Spotlight</h3>';
 
@@ -214,6 +363,7 @@ function viad_spotlight_widget() {
 	
 	return $html;
 }
+*/
 
 function viad_professionals_widget() {
 	$html .= '<h3 class="widget-title">Mijn professionals</h3>';
@@ -281,48 +431,42 @@ function viad_projects_widget() {
 
 	return $html;
 }
+/*
 
 function viad_jobs_widget() {
 	// Mijn projecten op professionals Dashboard
 
 	$html .= '<h3 class="widget-title">Mijn projecten</h3>';
 	$profile_id = get_user_meta(get_current_user_id(),'profile_id');
+	$project_ids = get_post_meta($profile_id[0], 'subscribed');
 	
-	
-	$job_ids = get_post_meta($profile_id[0], 'subscribed');
-	
-	if($job_ids) {
-		$jobs = get_posts(array('post__in' => $job_ids, 'post_type' => 'projects'));
+	if($project_ids) {
+		$projects = get_posts(array('post__in' => $project_ids, 'post_type' => 'projects'));
 		$html .= '<ul class="jobs">';
-		foreach($jobs as $job) {
+		foreach($projects as $project) {
 		
-		
-		
-			$job_meta = get_post_meta($job->ID);
-			$project_meta = get_post_meta($job->post_parent);
-			$owner_meta = get_user_meta($job->post_author);
-
-
+			$project_meta = get_post_meta($project->ID);
+			$owner_meta = get_user_meta($project->post_author);
 					
 			$thumb = wp_get_attachment_image_src( $owner_meta['profile_pic'][0], 'thumbnail');
 	
-			$html .= '<li class="job">';
+			$html .= '<li class="project">';
 			$html .= '<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
 			$html .= '<a class="bold" href="'.get_permalink($job->ID).'">';
-			$html .= $job->post_title;
+			$html .= $project->post_title;
 			$html .= '</a>';
 			$html .= '<br/>';
 			$html .= '<a href="'.get_permalink($owner_meta['profile_id'][0]).'">'.$owner_meta['full_name'][0].'</a>';
 			$html .= '<br/>';
 			
-			$html .= '<span><div class="icon icon-essential-regular-86-clock"></div> '.date_i18n('j F Y', $job_meta['deadline'][0]).'</span>';
+			$html .= '<span><div class="icon icon-essential-regular-86-clock"></div> '.date_i18n('j F Y', $project_meta['deadline'][0]).'</span>';
 			
 			$str = 'professionals';
-			if(count($project_meta['subscribed']) ==1 ) { 
+			if(count($project_meta['subscribed']) == 1 ) { 
 				$str = 'professional';
 			}
-			$html .= '<span><div class="icon icon-essential-regular-45-user"></div> '.count($job_meta['subscribed']).' '.$str.' ingeschreven</span>';
-			$html .= '<a href="'.get_permalink($job->ID).'">'.viad_arrow_svg('blue').'</a>';
+			$html .= '<span><div class="icon icon-essential-regular-45-user"></div> '.count($project_meta['subscribed']).' '.$str.' ingeschreven</span>';
+			$html .= '<a href="'.get_permalink($project->ID).'">'.viad_arrow_svg('blue').'</a>';
 			$html .= '<br class="clear"/>';
 			$html .= '</li>';
 		}
@@ -333,9 +477,11 @@ function viad_jobs_widget() {
 	}	
 	return $html;
 }
+*/
 
 
 
+/*
 function viad_favorites_widget() {
 
 	if(viad_get_favorites()) {
@@ -394,6 +540,7 @@ function viad_favorites_widget() {
 	return $html;
 	
 }
+*/
 
 
 function viad_notifications_widget() {

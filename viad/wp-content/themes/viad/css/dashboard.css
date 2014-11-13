@@ -15,11 +15,11 @@
 /* PROFILE */
 
 
-.profile .left a.button:hover, .profile .left a.button:visited:hover {
+.profile.professionals .left a.button:hover, .profile.professionals .left a.button:visited:hover {
 	background:#00ADEF;
 } 
 
-.profile .content h2 {
+.profile.professionals .content h2 {
 	color:#00ADEF;
 	font-weight:normal;
 	text-transform: none;
@@ -27,14 +27,41 @@
 }
 
 
-/*
-.profile a.button.selected {
-	background:white;
-	color:#00ADEF !important;
-	margin-right:0px;
-	width:200px;
+.profile.professionals .left a.button:hover, .profile.professionals .left a.button:visited:hover {
+	background:#00ADEF;
+} 
+
+.profile.professionals .content h2 {
+	color:#00ADEF;
+	font-weight:normal;
+	text-transform: none;
+	text-align: left;
 }
-*/
+
+.profile.companies .left a.button:hover, .profile.companies .left a.button:visited:hover {
+	background:#F26531;
+} 
+
+.profile.companies .content h2 {
+	color:#F26531;
+	font-weight:normal;
+	text-transform: none;
+	text-align: left;
+}
+
+
+.profile.companies .left a.button:hover, .profile.companies .left a.button:visited:hover {
+	background:#F26531;
+} 
+
+.profile.companies .content h2 {
+	color:#F26531;
+	font-weight:normal;
+	text-transform: none;
+	text-align: left;
+}
+
+
 
 
 /* ASIDE LEFT*/
@@ -53,7 +80,6 @@ aside.left {
 
 aside.left h3 {
 	text-transform: uppercase;
-	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
 	font-weight: 700; 
 	font-style: normal;
 	margin:10px;
@@ -85,11 +111,8 @@ aside.left ul.tab-menu li	{
 	padding:0px;
 	height:30px;
 	line-height:12px;	
-	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-	font-weight: 700; 
-	font-style: normal;
+	font-weight: 500; 
 	margin-bottom:2px;
-
 }
 aside.left ul.tab-menu li a:link, aside.left ul.tab-menu li a:visited	{
 	color:white;
@@ -100,35 +123,36 @@ aside.left ul.tab-menu li a:link, aside.left ul.tab-menu li a:visited	{
 	display:block;
   	transition: all 0.2s ease;
 }
-aside.left ul.tab-menu li a:hover, aside.left ul.tab-menu li a:visited:hover	{
+
+.professionals aside.left ul.tab-menu li a:hover, 
+.professionals aside.left ul.tab-menu li a:visited:hover,	
+.professionals aside.left ul.tab-menu li a.selected {
 	background:#00adef;
 	color:white;
 }
-aside.left ul.tab-menu li a.selected {
-	background:#00adef;
+
+.companies aside.left ul.tab-menu li a:hover, 
+.companies aside.left ul.tab-menu li a:visited:hover,	
+.companies aside.left ul.tab-menu li a.selected {
+	background:#F26531;
 	color:white;
 }
+
+
 aside.left .icon {
 	font-family: "essential-regular";
-	font-size: 16px;
+	font-size: 1.3em;
 	margin-top:-1px;
 	float:left;
 	width:22px;
+	font-style: normal;
+	font-weight: normal;
 }
 /* Dashboard*/
 
 
    
-h3.widget-title {
-	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
-	font-weight: 700; 
-	font-style: normal;
-	font-weight:normal;
-	background:#00adef; 
-	color:white;
-	font-size:16px;
-	padding:5px;
-}
+
 div.notification-count {
 	background: white;
 	color:#00adef;

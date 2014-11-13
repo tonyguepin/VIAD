@@ -163,18 +163,11 @@ function viad_display_edit_profile() {
 	
 
 	
-	$html .= '<div class="container profile-editor">';
-
-
-
-	$html .= '<h2>Profiel bewerken</h2>';
-
-$html .= '<div class="third">';
 	
-	if($profile->post_type == 'professionals') {
-		$html .= '<h3 class="widget-title">Personalia</h3>';
-	} else if($profile->post_type == 'companies') {
-		$html .= '<h3 class="widget-title">Bedrijfsgegevens</h3>';
+	if(viad_get_user_type() == 'professionals') {
+		$html .= '<h3>Personalia</h3>';
+	} else if(viad_get_user_type() == 'companies') {
+		$html .= '<h3>Bedrijfsgegevens</h3>';
 	}
 	
 	
@@ -219,15 +212,13 @@ $html .= '<div class="third">';
 
 
 		
-	$html .= '</div>';
 
-	//col 2
 
 	
-	if($profile->post_type == 'professionals') {			
+	if(viad_get_user_type() == 'professionals') {			
 		$html .= '<div class="third">';
 
-		$html .= '<h3 class="widget-title">CV</h3>';
+		$html .= '<h3>CV</h3>';
 		$html .= '<p>Functie / Ervaring</p>';
 		$all_tags = get_tags(array('hide_empty' => 0));
 		$tagged_with = wp_get_post_tags($p_id);
@@ -262,7 +253,7 @@ $html .= '<div class="third">';
 				$html .= '</div>';
 			}
 		} else {
-			// geen tags
+
 			$html .= '<div class="profession">';
 			$html .= '<select class="profession-list save" name="profession">';
 			$html .= '<option selected disabled>Functie</option>';
@@ -367,11 +358,9 @@ $html .= '<div class="third">';
 		}
 		$html .= '</ul>';
 	
-		$html .= '</div>';
-	} else if($profile->post_type == 'companies') {
+	} else if(viad_get_user_type() == 'companies') {
 
-		$html .= '<div class="third">';
-		$html .= '<h3 class="widget-title">Contactpersoon</h3>';
+		$html .= '<h3>Contactpersoon</h3>';
 		
 
 		$html .= '<p>Naam</p>';
@@ -387,15 +376,10 @@ $html .= '<div class="third">';
 		$html .= '<input class="save" name="um_contact_phone" type="text"  value="'.$u_meta['contact_phone'][0].'"/>';		
 
 
-
-		$html .= '</div>';
-
-
 	}
 	//col 3
 		
-	$html .= '<div class="third">';
-	$html .= '<h3 class="widget-title">Profiel</h3>';
+	$html .= '<h3>Profiel</h3>';
 	
 	$html .= '<p>Profiel tekst</p>';
 
@@ -425,6 +409,7 @@ $html .= '<div class="third">';
 	$html .= '</form>';
 
 
+/*
 	$img = wp_get_attachment_image_src($p_meta['background_pic'][0], 'thumbnail');
 
 	$html .= '<p>Omslagfoto</p>';
@@ -442,10 +427,9 @@ $html .= '<div class="third">';
 	$html .= '<input class="upload-btn" type="submit" value="foto uploaden" />';
 	$html .= '</div>';
 	$html .= '</form>';
+*/
 
-	$html .= '</div>';
 
-	//col3
 
 	
 	$html .= '<a href="#" class="button save-profile" data-publish="false">wijzigingen opslaan</a>';
@@ -454,7 +438,6 @@ $html .= '<div class="third">';
 	}
 
 
-	$html .= '</div>'; // container
 
 	
 	return $html;

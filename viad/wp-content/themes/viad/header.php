@@ -54,64 +54,19 @@
         <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-<?php
+	<?php
 
- 	$user = wp_get_current_user();
-	$user_meta = get_user_meta($user->ID);
 	
-	// Pages background pic
-/*
-	if($post->post_type == 'professionals' && is_singular('professionals') || $post->post_type == 'companies' && is_singular('companies')) {
-		$post_meta = get_post_meta($post->ID);
-		$bg_pic = wp_get_attachment_image_src( $post_meta['background_pic'][0], 'full');
-	}
-
-	// Dashboard background pic
-	if ( is_user_logged_in() && is_front_page()) {
-		$profile_meta = get_post_meta($user_meta['profile_id'][0]);
-		$bg_pic = wp_get_attachment_image_src( $profile_meta['background_pic'][0], 'full');
-	}
-
-	if($post->post_type == 'projects' && is_singular('projects')) {
-		
-		if($post->post_parent == 0) {
-			$meta = get_post_meta($post->ID);
-			$bg_pic = wp_get_attachment_image_src( $meta['background_pic'][0], 'full');
-			if(!$bg_pic){
-				$profile_meta = get_post_meta($user_meta['profile_id'][0]);
-				$bg_pic = wp_get_attachment_image_src( $profile_meta['background_pic'][0], 'full');
-			}
-		} else {
-			$meta = get_post_meta($post->post_parent);
-			$bg_pic = wp_get_attachment_image_src( $meta['background_pic'][0], 'full');
-			if(!$bg_pic){
-				$profile_meta = get_post_meta($user_meta['profile_id'][0]);
-				$bg_pic = wp_get_attachment_image_src( $profile_meta['background_pic'][0], 'full');
-			}
-
-		}
-	
-	}
-	
-	
-	$c = $class[$post->post_type];
 
 
-	if(!$c) {
-		$c = 'blue';
-	}
-	
-	if(!$bg_pic[0]) {
-*/
 
 	$bg_pic[0] = 'http://preview.viad.nl/wp-content/uploads/placeholder.jpg';
-/* 	} */
 
-?>
 
-	<?php
 	if ( is_user_logged_in() ) {
-		$class = 'logged-in';			
+		
+	
+		$class = 'logged-in '.viad_get_user_type();			
 	}
 	?>
 		<div class="user-info <?php echo $class ?>">

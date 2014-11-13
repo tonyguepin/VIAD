@@ -12,6 +12,13 @@
 /* !TYPE */
 
 
+/*
+	
+	BLAUW	#00ADEF
+	ORANJE	#F26531
+	GROEN	#8EC63F
+*/
+
 h2 {
 	text-transform: uppercase;
 	text-align: center;
@@ -128,13 +135,11 @@ br.clear {
    ========================================================================== */
    
 a.button, input[type="submit"] {
-	background: #00adef;
+	background: #666;
 	text-align: center;
 	padding-top:10px;
 	padding-bottom:10px;
-/*  	width:calc(100% - 20px); */
  	max-width: 180px;
-	width:200px;
 	margin:10px auto;
 	
 	
@@ -152,15 +157,26 @@ a.button, input[type="submit"] {
 	line-height: 20px;
   	transition: background-color 0.2s ease;
 }
+
+.professionals a.button:hover, .professionals input[type="submit"]:hover,
 a.button:hover, input[type="submit"]:hover {
 	cursor:pointer;
-	background: #8ec63f;
-/* 	clear: both; */
+	background: #00ADEF;
 }
 
-.button.onblue {
-	border:1px solid white;
+.projects a.button:hover, .projects input[type="submit"]:hover,
+a.button.green:hover, input[type="submit"].green:hover {
+	cursor:pointer;
+	background: #8EC63F;
 }
+
+.companies a.button:hover, .companies input[type="submit"]:hover,
+a.button.orange:hover, input[type="submit"].orange:hover {
+	cursor:pointer;
+	background: #F26531;
+}
+
+
 
 .button.gray {
 	background:#666;
@@ -427,10 +443,9 @@ section.collapsed .gradient i {
 	right:20px;
 	top:20px;
 	z-index: 10;
-	background: red;
 	padding:10px;
 	background: rgba(51,51,51,0.3);
-	
+	width:180px;
 }   
    
 .user-info.logged-in {
@@ -438,7 +453,6 @@ section.collapsed .gradient i {
 	height:40px;
 	-webkit-transition: all 0.5s ease;
 	transition: all 0.5s ease;	
-	
 }
 .user-info.logged-in:hover {
 	height:100px;
@@ -505,39 +519,8 @@ section.collapsed .gradient i {
 	width:15px;
 	height:15px;
 	border-radius:100%;
-
-}
-.user-info ul {
-	list-style: none;
-	padding:0px;
-	margin:10px;
-	width:180px;
-	height:180px;
 }
 
-
-.user-info a:link li, .user-info a:visited li{
-	width:90px;
-	height:90px;
-	float:left;
-	text-decoration: none;
-	color:#888;
-	font-size: smaller;
-	text-align: center;
-	-webkit-transition: color 0.2s ease;
-	transition: color 0.2s ease;
-}
-.user-info a:hover li, .user-info a:visited:hover li{
-	color:#00adef;
-}
-
-.user-info .icon {
-	clear:both;
-	font-size:36px;
-	height:30px;
-	margin-top:10px;
-	padding:0px;
-}
 /* ==========================================================================
    FRONTPAGE
    ========================================================================== */
@@ -1047,7 +1030,7 @@ section.calendar .day.today {
 }
 
 section.calendar .day.orange {
-	color: orange;
+	color: #F26531;
 }
 
 section.calendar .day.na {
@@ -1413,7 +1396,7 @@ aside.filter option {
 
 }
 .svg-star.blue .star {
-	fill:orange;
+	fill:#F26531;
 }
 
 a.toggle-favorite {
