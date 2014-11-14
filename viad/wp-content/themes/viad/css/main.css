@@ -201,8 +201,33 @@ p a:link,p a:visited {
 p a:hover,p a:visited:hover {
 	text-decoration:none;
 	color:#8ec63f;
-;
 }
+
+.professionals a:link,.professionals a:visited {
+	text-decoration:none;
+	color:#00adef;
+}
+.professionals a:hover,.professionals a:visited:hover {
+	text-decoration:none;
+	color:#666;
+}
+.companies a:link,.companies a:visited {
+	text-decoration:none;
+	color:#F26531;
+}
+.companies a:hover,.companies a:visited:hover {
+	text-decoration:none;
+	color:#666;
+}
+.projects a:link,.projects a:visited {
+	text-decoration:none;
+	color:#8EC63F;
+}
+.projects a:hover,.projects a:visited:hover {
+	text-decoration:none;
+	color:#666;
+}
+
 
 /* ==========================================================================
    MENU
@@ -493,6 +518,13 @@ section.collapsed .gradient i {
 	padding:5px;
 	color:white;
 }
+
+.user-info a:link, .user-info a:visited{
+	color:white;
+	text-decoration: none;
+}
+
+
 .user-info h4{
 	font-family: 'Gotham SSm A', 'Gotham SSm B'; 
 	font-weight: 700; 
@@ -828,9 +860,8 @@ section.profile-head {
 
 
 section.profile-head .thumbnail {
-	width:198px;
-	height:198px;
-	border:1px solid #666;
+	width:200px;
+	height:200px;
 	background: black;
 	background-position: center center;
 	background-size:cover;

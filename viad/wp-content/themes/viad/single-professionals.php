@@ -15,7 +15,7 @@
 				echo '<a href="#/dashboard" class="button gray">Dashboard</a>';
 			}
 			
-			echo '<h3><>Functies</h3>';
+			echo '<h3>Functies</h3>';
 			$functies = wp_get_post_tags($post->ID);
 			echo '<ul>';			
 			foreach($functies as $f) {

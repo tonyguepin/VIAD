@@ -118,7 +118,7 @@ $(document).ready(function() {
 		/////////////////////
 		// UPDATE USERINFO 
 		/////////////////////
-		if($('input.user_logged_in').length > 0 && !$('.switch').length) {
+		if($('.logged_in').length > 0 && !$('.switch').length) {
 			var update = setInterval(function() {
 			    $.ajax({
 			        url: ajaxurl,
