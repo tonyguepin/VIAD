@@ -19,40 +19,45 @@
    color: #666;
 }
 
-label {
- 	padding:5px; 
-}
 input[type=radio],
 input[type='checkbox'] {
   display: none;
 }
 input[type=radio] + label {
   display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 input[type='checkbox'] + label:before,
-input[type='radio'] + label:before {
+input[type='radio'] + label:after {
   display: block;
   font-family: "essential-regular";
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
-  margin-top: -3px;
-  margin-left:-30px;
-  
+  border-radius: 50%;
+  background:#F2F2F2;	
+  width:30px;
+  height:30px;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  position: absolute;
+  text-align: center;
 }
 input[type="checkbox"]:checked /* + label:before */ {
   padding-right: 6px;
 }
-input[type=radio] + label:before {
+input[type=radio] + label:after {
   content: "y"; /* Radio Unchecked */
   color:#666;
+  margin:0 auto;
+  margin-top:10px;
 }
-input[type=radio]:checked + label:before {
+input[type=radio]:checked + label:after {
   content: "u"; /* Radio Checked */
   color:#666;
+  margin-top:10px;
 }
 input[type="checkbox"] + label:before {
   content: "x"; /* Checkbox Unchecked */
@@ -76,10 +81,129 @@ input[type="email"] {
 	background:#F2F2F2;	
 }
 /* ==========================================================================
-   Register
+   Registreren stappen
    ========================================================================== */
-section.register fieldset .radio {
+
+/*  achtergronden sectie divs */
+section.register .register-kop,
+section.register .register-volgende {
+	background:#F2F2F2;
+	padding:40px 0px;
+}
+
+section.register .register-form {
+	background:#E6E6E6;
+	padding:40px 0px;
+}
+
+/*  styling registratie stappen */
+section.register h2 {
+	text-transform:none;
+	color: rgb(102, 102, 102);
+	font-size:1.8em;
+}
+
+section.register .register-kop h2,
+section.register .register-kop p {
+	text-align: center;
+	margin:0px;
+}
+
+/*  styling registratie stappen buttons */
+section.register .register-titel .stappen {
+	width:640px;
+	margin:0 auto;
+	height:70px;
+}
+
+section.register .register-titel .stappen .stap-item {
+  font-size: 12px;
+  color: rgb(179, 179, 179);
+  font-weight: bold;
+  width: 120px;
+  float:left;
+  margin-right:10px;
+  padding-top:9px;
+}
+
+section.register .register-titel .stappen .stap-item.last {
+  margin-right:0px;
+}
+
+section.register .register-titel .stappen .stap-item.selected {
+  font-size: 20px;
+  color: rgb(149, 193, 30);
+  padding-top:0px;
+}
+
+section.register .register-titel .stappen .stap-item .stap-rectangle {
+  background-color: rgb(178, 178, 178);
+  width: 120px;
+  height: 11px;
+  position: absolute;
+  bottom:0px;
+  margin-bottom:30px;
+}
+
+section.register .register-titel .stappen .stap-item.selected .stap-rectangle {
+  background-color: rgb(149, 193, 30);
+}
+
+/*  styling registratie registratie opties */
+section.register .register-form .registratie-opties {
+	width:490px;
+	margin:0 auto;
+	text-align:center;
+}
+
+section.register .register-form .registratie-optie {
 	float:left;
+	width:150px;
+	float:left;
+	text-align: center;
+}
+
+section.register .register-form .registratie-opties .registratie-spacer {
+	float:left;
+	text-align: center;
+	width:20px;
+	padding-top:25px;
+}
+section.register .register-form .circle {
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	text-align:center;
+	margin:0 auto;
+	margin-bottom:15px;
+}
+
+section.register .register-form .circle.blue {
+	background:#009FE3 url(../img/icon-registratie-professional.png) no-repeat center center;
+}
+section.register .register-form .circle.green {
+	background:#95C11F url(../img/icon-registratie-ingenieur.png) no-repeat center center;
+}
+section.register .register-form .circle.red {
+	background:#EB5B25 url(../img/icon-registratie-bedrijf.png) no-repeat center center;
+}
+
+section.register .register-volgende a.button {
+    background: none repeat scroll 0% 0% #00ADEF;
+    font-size: larger;
+    text-transform: none;
+    line-height: 20px;
+    transition: background-color 0.2s ease 0s;
+    padding: 20px 0px;
+    max-width: 180px;
+    margin: 10px auto;
+}
+
+section.register .register-volgende a:hover.button {
+    background: none repeat scroll 0% 0% #666;
+}
+
+section.register fieldset .radio {
  	clear: both;
 }
 
@@ -94,9 +218,7 @@ section.register fieldset p {
 }
 
 section.register fieldset {
-	max-width:700px;
 	margin:0 auto;
-	padding-right:20px;
 	
 	-webkit-transition: opacity 1.2s ease;
 	transition: opacity 1.2s ease;	
@@ -126,13 +248,3 @@ section.register fieldset .last_name-wrapper {
 
 }
 
-section.register fieldset.visible {
-	opacity: 1.0;
-	display: block;	
-	height:auto;
-
-}
-
-section.register fieldset .radio {
-	margin-left:30px;
-}
