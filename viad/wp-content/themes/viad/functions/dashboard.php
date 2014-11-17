@@ -34,6 +34,93 @@ function viad_db_reviews() {
 	$html .= '<h2>Reviews</h2>';
 	return $html;
 }
+
+function viad_db_professionals() {
+	$html .= '<h2>Mijn professionals</h2>';
+	
+
+	$professionals = get_user_meta(get_current_user_id(),'is_professional');
+
+
+
+	if($professionals) {
+		$html .= '<ul class="dashboard">';
+		foreach ($professionals as $prof_id) {
+			$prof = get_userdata($prof_id);
+			$user_meta = get_user_meta($prof->ID);
+			$profile_meta = get_post_meta($user_meta['profile_id'][0]);
+			$thumb = wp_get_attachment_image_src( $profile_meta['profile_pic'][0], 'thumbnail');
+			$html .= '<li class="dashboard">';
+			$html .= '<div class="col2">column 1';
+			$html .= '<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
+			$html .= '<span>'.$profile_meta['profession'][0].'</span>';
+			$html .= '</div>';
+
+			$html .= '<div class="col1">';
+			$html .= '<span><a class="switch" href="#" data-switch-to="'.$prof->ID.'">Log in als '.$user_meta['full_name'][0].'</a></span>';
+			$html .= '<form style="display:none;" id="switch'.$prof->ID.'" method="post" action="'.get_permalink($user_meta['profile_id'][0]).'"><input type="hidden" name="as" value="'.$prof->ID.'"><input type="hidden" name="self" value="'.get_current_user_id().'"></form>';
+			$html .= '</div>';
+			$html .= '<div class="col1">';
+			$html .= '</div>';
+			$html .= '</li>';
+		}
+		$html .= '</ul>';
+
+/*
+		$html .= '<ul class="dashboard">';
+		foreach($professionals as $professional) {
+			
+			$html .= '-----'.$professional;
+		
+		
+			$project_meta = get_post_meta($project->ID);
+			$owner_meta = get_user_meta($project->post_author);
+
+			$thumb = wp_get_attachment_image_src( $owner_meta['profile_pic'][0], 'thumbnail');
+	
+			$html .= '<li class="dashboard">';
+			$html .= '<div class="col2">';
+			$html .= '<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
+			$html .= '<a class="bold" href="'.get_permalink($project->ID).'">';
+			$html .= $project->post_title;
+			$html .= '</a>';
+			$html .= '<br/>';
+			$html .= '<a href="'.get_permalink($owner_meta['profile_id'][0]).'">'.$owner_meta['full_name'][0].'</a>';
+			$html .= '<br/>';
+			$html .= '</div>';
+
+			$html .= '<div class="col1">';
+			$html .= '<span><div class="icon icon-essential-regular-86-clock"></div> '.date_i18n('j F Y', $project_meta['deadline'][0]).'</span>';
+			$str = 'professionals';
+			if(count($project_meta['subscribed']) == 1 ) { 
+				$str = 'professional';
+			}
+			$html .= '<span><div class="icon icon-essential-regular-45-user"></div> '.count($project_meta['subscribed']).' '.$str.' ingeschreven</span>';
+			$html .= '</div>';
+
+			if(viad_get_user_type() == 'companies') {
+				$html .= '<div class="col1">';
+				$html .= '<span><div class="icon icon-essential-regular-42-pen"></div> Bewerken</span>';
+				$html .= '<span><div class="icon icon-essential-regular-28-trash"></div> <a class="delete" data-id="'.$project->ID.'" data-subject="dit project">Verwijderen</a></span>';
+				$html .= '</div>';
+			}
+			$html .= '</li>';
+		}
+		
+		$html .= '</ul>';
+*/
+	} else {
+		$html .= '<div class="col">';
+		$html .= '<p>Geen professionals gevonden</p>';
+		$html .= '</div>';
+		
+	}	
+	
+	
+	return $html;
+
+}
+
 function viad_db_projects() {
 	$html .= '<h2>Mijn projecten</h2>';
 	
@@ -47,37 +134,48 @@ function viad_db_projects() {
 	}
 
 	if($projects) {
-		$html .= '<ul class="jobs">';
+		$html .= '<ul class="dashboard">';
 		foreach($projects as $project) {
 			$project_meta = get_post_meta($project->ID);
 			$owner_meta = get_user_meta($project->post_author);
 
 			$thumb = wp_get_attachment_image_src( $owner_meta['profile_pic'][0], 'thumbnail');
 	
-			$html .= '<li class="project">';
+			$html .= '<li class="dashboard">';
+			$html .= '<div class="col2">';
 			$html .= '<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
-			$html .= '<a class="bold" href="'.get_permalink($job->ID).'">';
+			$html .= '<a class="bold" href="'.get_permalink($project->ID).'">';
 			$html .= $project->post_title;
 			$html .= '</a>';
 			$html .= '<br/>';
 			$html .= '<a href="'.get_permalink($owner_meta['profile_id'][0]).'">'.$owner_meta['full_name'][0].'</a>';
 			$html .= '<br/>';
-			
+			$html .= '</div>';
+
+			$html .= '<div class="col1">';
 			$html .= '<span><div class="icon icon-essential-regular-86-clock"></div> '.date_i18n('j F Y', $project_meta['deadline'][0]).'</span>';
-			
 			$str = 'professionals';
 			if(count($project_meta['subscribed']) == 1 ) { 
 				$str = 'professional';
 			}
 			$html .= '<span><div class="icon icon-essential-regular-45-user"></div> '.count($project_meta['subscribed']).' '.$str.' ingeschreven</span>';
-			$html .= '<a href="'.get_permalink($project->ID).'">'.viad_arrow_svg('blue').'</a>';
-			$html .= '<br class="clear"/>';
+			$html .= '</div>';
+
+			if(viad_get_user_type() == 'companies') {
+				$html .= '<div class="col1">';
+				$html .= '<span><div class="icon icon-essential-regular-42-pen"></div> Bewerken</span>';
+				$html .= '<span><div class="icon icon-essential-regular-28-trash"></div> <a class="delete" data-id="'.$project->ID.'" data-subject="dit project">Verwijderen</a></span>';
+				$html .= '</div>';
+			}
 			$html .= '</li>';
 		}
 		
 		$html .= '</ul>';
 	} else {
+		$html .= '<div class="col">';
 		$html .= '<p>Geen projecten gevonden</p>';
+		$html .= '</div>';
+		
 	}	
 	
 	
@@ -174,7 +272,7 @@ function viad_db_notifications() {
 	
 	$messages = get_posts(array('post_type' => 'messages', 'author' => get_current_user_id(), 'posts_per_page' => -1));
 	if(count($messages) > 0) {
-		$html .= '<ul class="all-messages">';
+		$html .= '<ul class="dashboard">';
 		foreach($messages as $m) {
 			$m_meta = get_post_meta($m->ID);
 			if($m_meta['read'][0] == 0) {
@@ -184,17 +282,25 @@ function viad_db_notifications() {
 			}
 			$s_meta = get_user_meta($m_meta['from'][0]); 
 			$thumb = wp_get_attachment_image_src( $s_meta['profile_pic'][0], 'thumbnail');
-			$html .= '<li class="message '.$class.' all">';
+			$html .= '<li class="dashboard '.$class.' msg">';
+			$html .= '<div class="col">';
 			$html .= '<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
 			$html .= '<a class="msg-title" data-msg-id="'.$m->ID.'" href="#">'.$m->post_title.'</a><br/>';
 			$html .= '<a class="msg-from bold" href="'.get_permalink($s_meta['profile_id'][0]).'">'.$s_meta['full_name'][0].'</a>';
 			$html .= '<p class="msg-text">'.$m->post_content.'</p>';
-			$html .= '<span><div class="icon icon-essential-regular-45-user"></div><a href="#" class="delete" data-id="'.$m->ID.'" data-subject="dit bericht">Verwijderen</a></span>';
+			$html .= '</div>';
+			$html .= '<div class="col">';
+			$html .= '<span><a href="#" class="delete" data-id="'.$m->ID.'" data-subject="dit bericht">Verwijderen</a></span>';
+			$html .= '<div>';
+
 			$html .= '</li>';
 		}
 		$html .= '</ul>';
 	} else {
+		$html .= '<div class="col">';
 		$html .= '<p>Geen berichten gevonden</p>';	
+		$html .= '</div>';
+
 	}	
 	
 	
@@ -365,6 +471,7 @@ function viad_spotlight_widget() {
 }
 */
 
+/*
 function viad_professionals_widget() {
 	$html .= '<h3 class="widget-title">Mijn professionals</h3>';
 	$professionals = get_user_meta(get_current_user_id(),'is_professional');
@@ -384,6 +491,7 @@ function viad_professionals_widget() {
 	$html .= '</ul>';
 	return $html;
 }
+*/
 
 
 function viad_projects_widget() {

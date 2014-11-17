@@ -33,12 +33,12 @@
 
 
 
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="<?php bloginfo('template_directory');?>/js/vendor/modernizr-2.6.2.min.js"></script>
+      	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
+        <script src="<?php bloginfo('template_directory');?>/js/nav.js"></script>
         <script src="<?php bloginfo('template_directory');?>/js/plugins.js"></script>
 	    <script src="http://malsup.github.com/jquery.form.js"></script> 
-        <script src="<?php bloginfo('template_directory');?>/js/nav.js"></script>
         <script src="<?php bloginfo('template_directory');?>/js/main.js"></script>
         <script src="<?php bloginfo('template_directory');?>/js/filter.js"></script>
 

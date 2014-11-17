@@ -35,12 +35,12 @@
         <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/jquery-ui-custom.css">
         <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/main.css">
         <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/custom.css">
-        <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/forms.css">
+         <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/forms.css">
         <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/dashboard.css">
 
 	    <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/css/essential-regular-styles.css">
         
-        <script src="<?php bloginfo('template_directory');?>/js/vendor/modernizr-2.6.2.min.js"></script>
+        
         
         <?php wp_head(); 
         
@@ -49,6 +49,7 @@
 			}        
         
         ?>
+        
     </head>
     <body class="<?php echo $body_class;?>">
         <!--[if lt IE 8]>

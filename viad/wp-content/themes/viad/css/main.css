@@ -889,6 +889,7 @@ section.profile-head .title h3{
 	margin:0px;
 }
 
+/*
 section.messages {
 	background:#f1f1f3;
 }
@@ -913,6 +914,7 @@ section.messages .unread {
 	font-weight: 700; 
 	font-style: normal;
 }
+*/
 
 /*
 PAGES CONTENT
@@ -1124,8 +1126,8 @@ aside.filter {
 	width:176px;
 	padding:10px;
 	float:left;
-	font-size:12px;
-	color:white;
+	font-size:1em;
+	color:white !important;
 }   
 aside.filter .button.gray {
 	background: #666666;
@@ -1156,7 +1158,7 @@ aside.filter li {
 	background: #666666;
 	line-height: 30px;
   	transition: all 0.2s ease;
-  	overflow:hidden;
+   	overflow:hidden;
 }
 
 aside.filter li.slider {
@@ -1191,6 +1193,7 @@ aside.filter .child-category.open, aside.filter .tag.open{
 }
 
 
+/*
 aside.filter label {
 	margin-left:22px;
 	-webkit-user-select: none;
@@ -1201,6 +1204,7 @@ aside.filter label {
 aside.filter label:hover {
 	cursor:pointer;
 }
+*/
 aside.filter li a:link, aside.filter li a:visited {
 	text-decoration: none;
 	color:white;

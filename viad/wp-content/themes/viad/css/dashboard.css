@@ -5,10 +5,23 @@
 	width:860px;
 }
 
-
+.content h2, .content p {
+	padding-left:20px;
+}
 .content p {
 	font-size:1em;
-	width:640px;
+/* 	width:640px; */
+}
+
+.content .col, .content .col2 {
+	width:400px;
+	float:left;
+	margin-left:20px;
+}
+.content .col1 {
+	width:200px;
+	float:left;
+	margin-left:20px;
 }
 
 
@@ -73,7 +86,6 @@ aside.left {
 	float:left;
 	font-size:1em;
 	color:white;
-	margin-right:20px;
 	margin-bottom: -5000px;
   	padding-bottom: 5000px;	
 }   
@@ -100,11 +112,6 @@ aside.left li {
 	line-height: 10px;
   	transition: all 0.2s ease;
   	overflow:hidden;
-}
-
-aside.left ul.tab-menu {
-	
-
 }
 
 aside.left ul.tab-menu li	{
@@ -171,76 +178,34 @@ div.notification-count.red {
 }
    
    
-ul.messages, ul.favorites, ul.jobs, ul.widget{
+ul.dashboard{
 	list-style: none;
 	padding:0px;
 	overflow:hidden;
+	position:relative;
 }
 
-li.message.unread{
-	background:#DFF1F7;
+li.dashboard {
 
-}
-
-li.message {
-	font-size:12px;
-	background: white;
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;	
 	overflow:hidden;
-
+	z-index: 3;
+	margin-left:0px;
+	padding:20px 0px 20px 0px;
+	border-bottom:1px solid #CCC;
 }
-
-li.message.all {
-	height:auto;
-}
-
-a.msg-title:link,a.msg-title:visited {
-	color:#00adef;
-	text-decoration: none;
-}
-
-a.msg-from:link,a.msg-from:visited {
-	color:#555;
-	text-decoration: none;
-}
-
-.msg-text {
-	opacity:0;
-	margin-left:45px;
-}
-
-
-li.message, li.favorite, li.job, li.professional, ul.widget li{
-/*  	height:60px; */
-	width:calc(100%-20px);
-	border-bottom:1px solid #ccc;
-	padding:10px;
-	position: relative;
-	display: block;
-	clear:both;
-
-}
-li.message {
-	height:60px;
-}
-li.favorite, ul.widget li {
-	display: block;
-	clear:both;
-}
-ul.widget li.gray {
+li.dashboard:nth-child(odd){
 	background:#f1f1f1;
 }
-ul.widget li.job {
-}
-ul.widget li.job a {
-/*
-	float:left;
-	clear:both;
-*/
+
+li.dashboard.unread{
+	background:#DFF1F7;
 }
 
-.message .thumb, .favorite .thumb, .job .thumb, .professional .thumb, ul.widget li .thumb{   
+
+
+li.dashboard .thumb {   
 	width:40px;
 	height:40px;
 	margin-right:10px;
@@ -251,30 +216,22 @@ ul.widget li.job a {
 	margin-bottom: 10px;		
 }
 
+li.dashboard.msg{
+	height:50px;
 
+}
 
-.message span, .favorite span, .job span, .professional, ul.widget span{
-	font-size:12px;
-	float:left;
+p.msg-text {
+	opacity:0.0;	
+	margin:20px 0px 10px 30px;
+}
+
+li.dashboard span {
+	font-size: 0.9em;
 	clear:both;
-	
-}  
-
-.favorite a:link,.favorite a:visited,
-.job a:link,.job a:visited,
-.professional a:link,.professional a:visited,
-ul.widget a:link, ul.widget a:visited {
-	color:#555;
-	text-decoration: none;
-} 
-.favorite a:hover,.favorite a:visited:hover,
-.job a:hover,.job a:visited:hover,
-.professional a:hover,.professional a:visited:hover,
-ul.widget a:hover, ul.widget a:visited:hover {
-	color:#00adef;
-} 
-
-.favorite .svg-star {
+	float:left;
+}
+li.dashboard .svg-star {
 	right:0px;
 	position:absolute;
 	width:22px;
@@ -282,35 +239,41 @@ ul.widget a:hover, ul.widget a:visited:hover {
 	margin-right:5px;
 	
 }
-.favorite .svg-star .circle{
-	fill:#f2f2f2;
+li.dashboard .circle{
+	fill:#f1f1f1;
 }
-.favorite .svg-arrow, .job .svg-arrow {
+
+li.dashboard:nth-child(odd) .circle{
+	fill:white;
+}
+
+
+li.dashboard .svg-arrow {
 	width:22px;
 	height:22px;
-	position: absolute;
-	right:0px;
-	bottom:5px;
-	margin-right:5px;
+	float:right;
+	margin-right:10px;	
 
 }
 
-.favorite .svg-arrow .circle,
-.job .svg-arrow .circle {
-	fill:#f2f2f2;
+.companies li.dashboard .svg-arrow .arrow {
+	fill:#F26531;
 }
-.favorite .svg-arrow .arrow,
-.job .svg-arrow .arrow {
-
-	fill:#00adef;
+.professionals li.dashboard .svg-arrow .arrow {
+	fill:#00ADEF;
 }
 
-.favorite .icon,
-.job .icon, ul.widget .icon {
+li.dashboard .icon {
 	float:left;
 	font-size: 14px;
 	margin-right:3px;
 	margin-top:-1px;
-	color:#00adef;
+}
+
+.companies li.dashboard .icon {
+	color:#F26531;
+}
+.professionals li.dashboard .icon {
+	color:#00ADEF;
 }
 

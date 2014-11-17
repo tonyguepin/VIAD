@@ -543,13 +543,8 @@ function viad_display_user_info() {
 	 	$html .= '</div>';
 	 	
 	 	if($_POST['self']) {
-/* 	 	
-
-	switch terug naar eigen profiel 
-
-*/
-//	 		$html .= '<form style="display:none;" id="switch'.$_POST['self'].'" method="post" action="/viad-trunk/viad/"><input type="hidden" name="as" value="'.$_POST['self'].'"></form>';
-//			$html .= '<a class="button switch" href="#" data-switch-to="'.$_POST['self'].'">Terug</a>';
+	 		$html .= '<form style="display:none;" id="switch'.$_POST['self'].'" method="post" action="/viad-trunk/viad/"><input type="hidden" name="as" value="'.$_POST['self'].'"></form>';
+			$html .= '<a class="button switch" href="#" data-switch-to="'.$_POST['self'].'">Terug</a>';
 	 	} else {
 	 		$html .= '<div id="info-notification">';
 			$html .= '<a class="button" href="'.wp_logout_url(home_url()).'" title="Logout">Logout</a>';

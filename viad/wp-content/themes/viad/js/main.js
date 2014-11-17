@@ -532,13 +532,21 @@ $(document).ready(function() {
 	$(document).on('click','.msg-title', function(e){
 		e.preventDefault();
 		
-		var li = $(this).parent();
-		$(li).removeClass('unread');
- 		$(li).find('p.msg-intro').hide();
- 		var h = $(li).find('p.msg-text').height();
- 		$(li).height('+='+h);
- 		$(li).find('p.msg-text').css({'opacity':1.0});
 
+		var li = $(this).parent().parent();
+		$(li).removeClass('unread');
+		
+		if($(li).hasClass('open') == false) {
+ 			var h = $(li).find('p.msg-text').height();
+	 		$(li).height(70+h);
+ 			$(li).find('p.msg-text').css({'opacity':1.0});
+			$(li).addClass('open');
+		} else {
+	 		$(li).height(50);
+ 			$(li).find('p.msg-text').css({'opacity':0.0});
+			$(li).removeClass('open');
+		}
+		
 	    $.ajax({
 	        url: ajaxurl,
 	        data: {action:'viad_read_message', msg_id:$(this).data('msg-id')},
@@ -546,29 +554,8 @@ $(document).ready(function() {
 	        	console.log(json);
 	        }
 	    });
-	
-	});
-	if(location.hash == '#/all-messages') {
-		
-	    $.ajax({
-	        url: ajaxurl,
-	        data: {action:'viad_all_messages'},
-	        success:function(html) {
-	        	$('section.dashboard.main').html(html);
-	        }
-	    });
-	
-	}
-	$(document).on('click', '.all-messages', function(e) {
-		console.log('aaaaaa');
-    	$.ajax({
-	        url: ajaxurl,
-	        data: {action:'viad_all_messages'},
-        	success:function(html) {
-    	    	$('section.dashboard.main').html(html);
-	        }
-	    });
 
+	
 	});
 
 	/////////////////////

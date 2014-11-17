@@ -58,6 +58,9 @@ function viad_load_content() {
 	} else if($hash == 'betalen') {
 		$update[0]['container'] = '.content';
 		$update[0]['html'] = viad_db_payment();
+	} else if($hash == 'professionals') {
+		$update[0]['container'] = '.content';
+		$update[0]['html'] = viad_db_professionals();
 	}
 
 	$update[1]['container'] = 'aside.left';
