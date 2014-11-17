@@ -114,7 +114,6 @@ function viad_delete() {
 	wp_trash_post($_REQUEST['id']);
 	if($_REQUEST['subject'] == 'dit bericht') {
 		
-		echo viad_all_messages();
 			
 	} else {
 		echo home_url();

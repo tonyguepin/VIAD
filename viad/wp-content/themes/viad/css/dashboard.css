@@ -182,11 +182,10 @@ ul.dashboard{
 	list-style: none;
 	padding:0px;
 	overflow:hidden;
-	position:relative;
 }
 
 li.dashboard {
-
+	position:relative;
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;	
 	overflow:hidden;
@@ -203,8 +202,6 @@ li.dashboard.unread{
 	background:#DFF1F7;
 }
 
-
-
 li.dashboard .thumb {   
 	width:40px;
 	height:40px;
@@ -218,7 +215,6 @@ li.dashboard .thumb {
 
 li.dashboard.msg{
 	height:50px;
-
 }
 
 p.msg-text {
@@ -233,7 +229,7 @@ li.dashboard span {
 }
 li.dashboard .svg-star {
 	right:0px;
-	position:absolute;
+ 	position:absolute; 
 	width:22px;
 	height: 22px;
 	margin-right:5px;

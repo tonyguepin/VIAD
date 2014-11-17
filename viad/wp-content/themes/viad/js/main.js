@@ -1,9 +1,22 @@
 
 function screen_notification(text) {
-	
-	$('.user-info').css({height:200});			
-			
-		
+	$('#info-notification').html('<p>'+text+'</p>');	
+	$('.user-info').addClass('notify');			
+	setTimeout(function() {
+		$('.user-info').removeClass('notify');			
+	    $.ajax({
+	        url: ajaxurl,
+	        dataType: 'JSON',
+	        data: {
+	            'action':'viad_update_userinfo'
+	        },
+	        success:function(json) {
+				$(json).each(function() {
+					$(this.container).html(this.html);
+				});		        
+	        }
+	    });
+	},1500)	
 }
 
 
@@ -44,10 +57,11 @@ $(document).ready(function() {
 			var classes = svg.attr('class');
 			if(classes.indexOf('blue') != -1) {
 				svg.attr("class", "svg-star gray");
+				screen_notification('Verwijderd uit favorieten');
+
 			} else {
 				svg.attr("class", "svg-star blue");
-				
-				
+				screen_notification('Toegevoegd aan favorieten');
 			}
 
 		    $.ajax({
@@ -58,12 +72,9 @@ $(document).ready(function() {
 		            project_id: $(this).data('id')
 		        },
 		        success:function(json) {
-					
-					screen_notification('Toegevoegd aan favorieten');
-							        
-				//	$(json).each(function() {
-				//		$(this.container).html(this.html);
-				//	});		        
+					$(json).each(function() {
+						$(this.container).html(this.html);
+					});		        
 				}
 		    });
 		});
@@ -118,7 +129,7 @@ $(document).ready(function() {
 		/////////////////////
 		// UPDATE USERINFO 
 		/////////////////////
-		if($('.logged_in').length > 0 && !$('.switch').length) {
+		if($('.logged-in').length > 0 /* && !$('.switch').length */) {
 			var update = setInterval(function() {
 			    $.ajax({
 			        url: ajaxurl,
@@ -128,19 +139,19 @@ $(document).ready(function() {
 			        },
 			        success:function(json) {
 						$(json).each(function() {
-							$(this.container).html(this.html);
+							if($(this.container).hasClass('notify') == false ) {
+								$(this.container).html(this.html);
+							}
 						});		        
 			        }
 			    });
-			}, 10000);
+			}, 15000);
 		}
 
 				
 		/////////////////////
 		// REGISTER
 		/////////////////////
-		
-
 		$('input[name="type"]').change(function() {
 			if($(this).val() == 'companies') {
 				$('.contact').removeClass('hidden');

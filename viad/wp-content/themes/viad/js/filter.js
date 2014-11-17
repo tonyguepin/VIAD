@@ -7,7 +7,7 @@
 var mode = 'projects';
 
 
-if($('section.professionals').length) {
+if($('body.page section.professionals').length) {
     mode = 'professionals';
     
     
@@ -96,7 +96,7 @@ if($('section.professionals').length) {
 
 
 
-if($('section.projects').length) {
+if($('body.page section.projects').length) {
 	 mode = 'projects';	
     filter(1,mode);
 }

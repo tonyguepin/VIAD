@@ -39,8 +39,8 @@
         <script src="<?php bloginfo('template_directory');?>/js/nav.js"></script>
         <script src="<?php bloginfo('template_directory');?>/js/plugins.js"></script>
 	    <script src="http://malsup.github.com/jquery.form.js"></script> 
-        <script src="<?php bloginfo('template_directory');?>/js/main.js"></script>
-        <script src="<?php bloginfo('template_directory');?>/js/filter.js"></script>
+        <script src="<?php bloginfo('template_directory');?>/js/main.js"></script> 
+          <script src="<?php bloginfo('template_directory');?>/js/filter.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

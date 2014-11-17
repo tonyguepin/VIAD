@@ -45,8 +45,11 @@ function viad_toggle_favorite() {
 		add_post_meta($profile_id[0], 'favorites', $project_id);
 	}
 	$update = array();
-	$update[0]['container'] = '.projects.overview';
-	$update[0]['html'] = viad_archive_projects();
+
+
+	$update[0]['container'] = '.content';
+	$update[0]['html'] = viad_db_favorites();
+
 
 	echo json_encode($update);
 	

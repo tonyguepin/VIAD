@@ -118,12 +118,14 @@ function viad_filter_professionals() {
 			echo viad_content($first_part);
 			echo '</div>';
 			echo '<div class="project-meta">';
-			$favorites = viad_get_favorites();
-			if($favorites) {
-				if(in_array($match->ID, $favorites)) {
-					echo '<a href="#" class="toggle-favorite" title="Toevoegen aan favorieten" data-id="'.$match->ID.'">'.viad_star_svg('blue').'</a>';
-				} else {
-					echo '<a href="#" class="toggle-favorite" title="Toevoegen aan favorieten" data-id="'.$match->ID.'">'.viad_star_svg().'</a>';
+			if(viad_get_user_type() == 'companies') {
+				$favorites = viad_get_favorites();
+				if($favorites) {
+					if(in_array($match->ID, $favorites)) {
+						echo '<a href="#" class="toggle-favorite" title="Toevoegen aan favorieten" data-id="'.$match->ID.'">'.viad_star_svg('blue').'</a>';
+					} else {
+						echo '<a href="#" class="toggle-favorite" title="Toevoegen aan favorieten" data-id="'.$match->ID.'">'.viad_star_svg().'</a>';
+					}
 				}
 			}
 			echo '<div style="height:40px; display:block;"></div>';

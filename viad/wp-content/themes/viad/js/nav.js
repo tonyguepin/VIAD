@@ -9,6 +9,7 @@ window.onhashchange = function() {
 
 
 function load_content(hash) {
+
 	hash = hash.replace('#/','');
     $.ajax({
         url: ajaxurl,
@@ -25,4 +26,5 @@ function load_content(hash) {
 			$('ul.tab-menu li a[href="#/'+hash+'"]').addClass('selected');
 		}
    });
+
 }
