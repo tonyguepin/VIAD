@@ -71,20 +71,225 @@ input[type="email"] {
  	clear: both;
  	margin-bottom:15px;
  	width:calc(100% - 22px);
-	padding:5px;
+	padding:10px;
 	border:1px solid #CCC;
 	font-family: 'Gotham SSm A', 'Gotham SSm B'; font-weight: 400; font-style: normal;
 	background:#F2F2F2;	
 }
 /* ==========================================================================
-   Register
+   Global registratie stappen
    ========================================================================== */
-section.register fieldset .radio {
+
+input#i0[type=radio] + label:before,
+input#i0[type=radio]:checked + label:before,
+input#i1[type=radio] + label:before,
+input#i1[type=radio]:checked + label:before,
+input#i2[type=radio] + label:before,
+input#i2[type=radio]:checked + label:before {
+  content: none;
+}
+
+input#i0[type=radio] + label,
+input#i1[type=radio] + label,
+input#i2[type=radio] + label {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+input#i0[type='radio'] + label:after,
+input#i1[type='radio'] + label:after,
+input#i2[type='radio'] + label:after {
+  display: block;
+  font-family: "essential-regular";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  border-radius: 50%;
+  background:#F2F2F2;
+  width:30px;
+  height:30px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+input#i0[type=radio] + label:after,
+input#i1[type=radio] + label:after,
+input#i2[type=radio] + label:after {
+  content: "y"; /* Radio Unchecked */
+  color:#666;
+  margin:0 auto;
+  margin-top:10px;
+}
+input#i0[type=radio]:checked + label:after,
+input#i1[type=radio]:checked + label:after,
+input#i2[type=radio]:checked + label:after {
+  content: "u"; /* Radio Checked */
+  color:#666;
+  margin-top:10px;
+}
+
+section.register input[type="text"],
+section.register input[type="password"],
+section.register input[type="email"] {
 	float:left;
+ 	clear: both;
+ 	margin-bottom:15px;
+ 	width:calc(100% - 22px);
+	padding:10px;
+	border:1px solid #CCC;
+	font-family: 'Gotham SSm A', 'Gotham SSm B'; font-weight: 400; font-style: normal;
+	background:#fff;	
+}
+
+section.register label {
+ 	padding:0px; 
+ 	
+}
+
+/*  achtergronden sectie divs */
+section.register .register-kop,
+section.register .register-volgende {
+	background:#F2F2F2;
+	padding:40px 0px;
+}
+
+section.register .register-form {
+	background:#E6E6E6;
+	padding:40px 0px;
+}
+
+section.register .register-akkoord {
+	background:#00ADEF;
+	padding:40px 0px;
+}
+
+
+/* ==========================================================================
+   Registreren stappen - stap 1
+   ========================================================================== */
+
+/*  styling registratie stappen */
+section.register h2 {
+	text-transform:none;
+	color: rgb(102, 102, 102);
+	font-size:1.8em;
+}
+
+section.register .register-kop h2,
+section.register .register-kop p {
+	text-align: center;
+	margin:0px;
+}
+
+/*  styling registratie stappen buttons */
+section.register .register-titel .stappen {
+	width:640px;
+	margin:0 auto;
+	height:70px;
+}
+
+section.register .register-titel .stappen .stap-item {
+  font-size: 12px;
+  color: rgb(179, 179, 179);
+  font-weight: bold;
+  width: 120px;
+  float:left;
+  margin-right:10px;
+  padding-top:9px;
+}
+
+section.register .register-titel .stappen .stap-item.last {
+  margin-right:0px;
+}
+
+section.register .register-titel .stappen .stap-item.selected {
+  font-size: 20px;
+  color: rgb(149, 193, 30);
+  padding-top:0px;
+}
+
+section.register .register-titel .stappen .stap-item.done {
+  color: rgb(190, 218, 121);
+}
+
+
+section.register .register-titel .stappen .stap-item .stap-rectangle {
+  background-color: rgb(178, 178, 178);
+  width: 120px;
+  height: 11px;
+  position: absolute;
+  bottom:0px;
+  margin-bottom:30px;
+}
+
+section.register .register-titel .stappen .stap-item.selected .stap-rectangle {
+  background-color: rgb(149, 193, 30);
+}
+section.register .register-titel .stappen .stap-item.done .stap-rectangle {
+  background-color: rgb(190, 218, 121) !important;
+}
+
+/*  styling registratie registratie opties */
+section.register .register-form .registratie-opties {
+	width:490px;
+	margin:0 auto;
+	text-align:center;
+}
+
+section.register .register-form .registratie-optie {
+	float:left;
+	width:150px;
+	float:left;
+	text-align: center;
+}
+
+section.register .register-form .registratie-opties .registratie-spacer {
+	float:left;
+	text-align: center;
+	width:20px;
+	padding-top:25px;
+}
+section.register .register-form .circle {
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	text-align:center;
+	margin:0 auto;
+	margin-bottom:15px;
+}
+
+section.register .register-form .circle.blue {
+	background:#009FE3 url(../img/icon-registratie-professional.png) no-repeat center center;
+}
+section.register .register-form .circle.green {
+	background:#95C11F url(../img/icon-registratie-ingenieur.png) no-repeat center center;
+}
+section.register .register-form .circle.red {
+	background:#EB5B25 url(../img/icon-registratie-bedrijf.png) no-repeat center center;
+}
+
+section.register .register-volgende a.button {
+    background: none repeat scroll 0% 0% #00ADEF;
+    font-size: larger;
+    text-transform: none;
+    line-height: 20px;
+    transition: background-color 0.2s ease 0s;
+    padding: 20px 0px;
+    max-width: 180px;
+    margin: 10px auto;
+}
+
+section.register .register-volgende a:hover.button {
+    background: none repeat scroll 0% 0% #666;
+}
+
+section.register .stap-1 fieldset .radio {
  	clear: both;
 }
 
-input.empty {
+section.register input.empty {
 	border-bottom: 2px dashed red;
 }
 
@@ -92,12 +297,13 @@ section.register fieldset p {
 	margin:0.5em 0;
 	font-size:1em;
 	clear:both;
+	font-weight:bold;
 }
-
+section.register fieldset p a {
+	font-weight:normal;
+}
 section.register fieldset {
-	max-width:700px;
 	margin:0 auto;
-	padding-right:20px;
 	
 	-webkit-transition: opacity 1.2s ease;
 	transition: opacity 1.2s ease;	
@@ -109,31 +315,111 @@ section.register fieldset {
 
 }
 
+/* ==========================================================================
+   Registreren stappen - stap 2
+   ========================================================================== */
+
+
+section.register fieldset.stap-2 {
+	max-width:640px;
+}
+
 section.register fieldset .name-wrapper {
-	width:190px;
+	width:420px;
 	float:left;
 
 }
 
 section.register fieldset .tussenvoegsel-wrapper {
-	width:120px;
+	width:200px;
 	float:left;
+	margin-left:20px;
 
 }
 
 section.register fieldset .last_name-wrapper {
-	width:390px;
+	width:420px;
 	float:left;
 
 }
-
-section.register fieldset.visible {
-	opacity: 1.0;
-	display: block;	
-	height:auto;
-
+section.register fieldset .geslacht-wrapper {
+	float:left;
+	margin-left:20px;
+}
+section.register fieldset .geslacht-wrapper .radio {
+	float:left;
+	display:block;
+	margin-left:28px;
+	margin-right:15px;
+	margin-top:8px;
 }
 
-section.register fieldset .radio {
-	margin-left:30px;
+/* ==========================================================================
+   Registreren stappen - stap 3
+   ========================================================================== */
+
+section.register .keur-merk-wrapper {
+	width:320px;
+	margin:0 auto;
 }
+
+section.register .keurmerk {
+	float:right;
+}
+
+section.register fieldset.stap-3 {
+	max-width:640px;
+}
+
+
+section.register fieldset .radio-stap-3 {
+	padding-top:10px;
+	margin-left:0px;
+	margin-bottom:40px;
+}
+
+section.register fieldset .radio-stap-3 label {
+	line-height:20px;
+}
+
+
+section.register fieldset .radio-stap-3 .radio {
+	float:left;
+	display:block;
+	margin-left:28px;
+	margin-right:15px;
+	margin-top:8px;
+	padding-bottom:4px;
+}
+
+section.register fieldset .kvk-wrapper {
+	width:420px;
+}
+section.register fieldset .no-bold {
+	font-weight: normal;
+}
+
+section.register fieldset .radio-stap-3 .radio.white {
+	float:none;
+}
+
+input#r7[type='radio'] + label:before,
+input#r8[type='radio'] + label:before {
+  display: block;
+  font-family: "essential-regular";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  border-radius: 50%;
+  background:#F2F2F2;
+  width:22px;
+  height:21px;
+  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+}
+
+
+
+

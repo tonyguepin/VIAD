@@ -46,7 +46,7 @@ get_header();
 			
 			<div class="register-form">
 				<div class="container">
-					<fieldset class="stap1">
+					<fieldset class="stap-1">
 						<div class="registratie-opties clearfix">
 							<div class="registratie-optie">
 								<div class="circle blue">&nbsp;</div>
