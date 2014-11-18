@@ -1,4 +1,5 @@
 * text=auto !eol
+Doc/scenarios/A[!!-~]Overzicht.xls -text
 Doc/scenarios/Organisatie[!!-~]-[!!-~]Archief.xls -text svn_keywords
 Doc/scenarios/Organisatie[!!-~]-[!!-~]Betalen.xls -text svn_keywords
 Doc/scenarios/Organisatie[!!-~]-[!!-~]Bezoeken.xls -text svn_keywords
@@ -23,6 +24,8 @@ Doc/scenarios/Professional[!!-~]-[!!-~]project[!!-~]zoeken.xls -text svn_keyword
 Doc/scenarios/Professional[!!-~]-[!!-~]review[!!-~]schrijven.xls -text svn_keywords
 Doc/scenarios/Professional[!!-~]-[!!-~]spotlight.xls -text svn_keywords
 Doc/scenarios/Professional[!!-~]-[!!-~]uitschrijven.xls -text svn_keywords
+Doc/scenarios/VIAD[!!-~]-[!!-~]Org[!!-~]beheer.xls -text
+Doc/scenarios/VIAD[!!-~]-[!!-~]Prof[!!-~]beheer.xls -text
 Doc/scenarios/scenario's[!!-~]VIAD.xls -text
 Doc/viad_overzicht_programmeren.xls -text
 viad/wp-admin/images/align-center-2x.png -text
