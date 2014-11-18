@@ -155,7 +155,8 @@ section.register .register-volgende {
 	padding:40px 0px;
 }
 
-section.register .register-form {
+section.register .register-form,
+section.register .register-afrekening-akkoord {
 	background:#E6E6E6;
 	padding:40px 0px;
 }
@@ -163,6 +164,12 @@ section.register .register-form {
 section.register .register-akkoord {
 	background:#00ADEF;
 	padding:40px 0px;
+}
+
+section.register .register-afrekening {
+	background:#666666;
+	padding:40px 0px;
+	color:white;
 }
 
 
@@ -231,7 +238,7 @@ section.register .register-titel .stappen .stap-item.done .stap-rectangle {
   background-color: rgb(190, 218, 121) !important;
 }
 
-/*  styling registratie registratie opties */
+/*  styling registratie opties */
 section.register .register-form .registratie-opties {
 	width:490px;
 	margin:0 auto;
@@ -420,6 +427,244 @@ input#r8[type='radio'] + label:before {
   position: absolute;
 }
 
+/* ==========================================================================
+   Registreren stappen - stap 4
+   ========================================================================== */
 
+
+section.register fieldset.stap-4 {
+	max-width:720px;
+}
+
+section.register fieldset.stap-4 p {
+	font-weight:normal;
+	padding:8px 0 0 40px;
+	font-size:.9em;
+}
+
+section.register fieldset.stap-4 p.periode {
+	text-align:center;
+	padding:0px;
+	margin:0px;
+}
+
+section.register fieldset.stap-4 p.prijs {
+	text-align:center;
+	padding:0px;
+	margin:0px;
+	font-size:3em;
+	font-weight:500;
+}
+
+section.register fieldset.stap-4 p sup.euro,
+section.register fieldset.stap-4 p sup.decimaal {
+	font-size:20px;
+}
+
+
+section.register fieldset.stap-4 .abonnementsvormen { 
+	background:red;
+}
+
+section.register fieldset.stap-4 .abonnementsvorm {
+	width:239px;
+	background:white;
+	float:left;
+	border-left:1px solid #CCCCCC;
+	min-height:771px;
+}
+section.register fieldset.stap-4 .abonnementsvorm.first {
+	border-left:none;
+}
+section.register fieldset.stap-4 .blue {
+	color:#00ADEF;
+}
+section.register fieldset.stap-4 .green {
+	color:#8EC63F;
+}
+section.register fieldset.stap-4 .red {
+	color:#F26531;
+}
+
+section.register fieldset.stap-4 .abonnementsvorm .abo-header {
+	background:#f6f6f6;
+	width:240px;
+	height:160px;
+	text-align: center;
+	font-size:1.5em;
+	font-weight:bold;
+	padding-top:40px;
+}
+
+section.register fieldset.stap-4 .abonnementsvorm .abo-header .abo-icon {
+	height:96px;
+	width:96px;
+	border-radius:50%;
+	background:#00ADEF;
+	text-align: center;
+	margin:0 auto;
+	margin-bottom:10px;
+}
+section.register fieldset.stap-4 .abonnementsvorm .abo-header .abo-icon.green {
+	background:#8EC63F;
+}
+section.register fieldset.stap-4 .abonnementsvorm .abo-header .abo-icon.red {
+	background:#F26531;
+}
+
+section.register fieldset.stap-4 .abonnementsvorm .abo-list ul.abo-list-item-on {
+	list-style-type: none;
+	list-style-image: url(../img/icon-registratie-list-item-on.png);
+}
+
+section.register fieldset.stap-4 .abonnementsvorm .abo-list ul.abo-list-item-off {
+	list-style-type: none;
+	list-style-image: url(../img/icon-registratie-list-item-off.png);
+}
+section.register fieldset.stap-4 .abonnementsvorm .abo-list ul.abo-list-item-on li,
+section.register fieldset.stap-4 .abonnementsvorm .abo-list ul.abo-list-item-off li {
+	margin-bottom:10px;
+	font-size:.9em;
+}
+section.register fieldset.stap-4 .abonnementsvorm .abo-list ul.abo-list-item-off li {
+	color:#B3B3B3;
+}
+
+section.register fieldset.stap-4 a.button.abo-button-basis,
+section.register fieldset.stap-4 a.button.abo-button-plus,
+section.register fieldset.stap-4 a.button.abo-button-custom {
+    background: none repeat scroll 0% 0% #00ADEF;
+    font-size: larger;
+    text-transform: none;
+    line-height: 20px;
+    transition: background-color 0.2s ease 0s;
+    padding: 20px 0px;
+    max-width: 200px;
+    margin: 10px auto;
+}
+section.register fieldset.stap-4 a.button.abo-button-plus {
+	background:#8EC63F;
+}
+section.register fieldset.stap-4 a.button.abo-button-custom {
+	background:#F26531;
+	margin-top:102px;
+}
+
+section.register fieldset.stap-4 a:hover.button.abo-button-basis,
+section.register fieldset.stap-4 a:hover.button.abo-button-plus,
+section.register fieldset.stap-4 a:hover.button.abo-button-custom {
+    background: none repeat scroll 0% 0% #666;
+}
+
+
+/* ==========================================================================
+   Registreren stappen - stap 5
+   ========================================================================== */
+
+
+section.register fieldset.stap-5 {
+	max-width:640px;
+}
+
+section.register fieldset.stap-5 p {
+	font-weight:normal;
+	text-align: left;
+}
+
+section.register fieldset.stap-5 .betaal-spacer {
+	width:20px;
+	float:left;
+	padding-top:25px;
+}
+
+section.register fieldset.stap-5 .betaalwijze {
+	width:145px;
+	float:left;
+}
+section.register fieldset.stap-5 .betaalwijze p {
+	text-align: center;	
+}
+section.register fieldset.stap-5 .betaalwijze .betaal-cirkel {
+	width:60px;
+	height:60px;
+	border-radius:50%;
+	background:white;
+	margin:auto auto;
+}
+
+section.register fieldset.stap-5 p.betaalwijze {
+	text-align:center;
+	padding:0px;
+	margin:0px;
+}
+
+/*  styling afrekening opties */
+section.register .register-afrekening .afrekening-opties {
+	width:490px;
+	margin:0 auto;
+	text-align:center;
+}
+
+section.register .register-afrekening .afrekening-optie {
+	float:left;
+	width:150px;
+	float:left;
+	text-align: center;
+}
+
+section.register .register-afrekening .afrekening-opties .afrekening-spacer {
+	float:left;
+	text-align: center;
+	width:20px;
+	padding-top:25px;
+}
+section.register .register-afrekening .afrekening-opties .circle {
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	text-align:center;
+	margin:0 auto;
+	margin-bottom:15px;
+}
+
+section.register .register-afrekening .afrekening-opties .circle.mastercard {
+	background:#fff url(../img/icon-betaalwijze-mastercard.png) no-repeat center center;
+}
+section.register .register-afrekening .circle.visa {
+	background:#fff url(../img/icon-betaalwijze-visa.png) no-repeat center center;
+}
+section.register .register-afrekening .circle.ae {
+	background:#fff url(../img/icon-betaalwijze-ae.png) no-repeat center center;
+}
+
+section.register fieldset.stap-5 .radio {
+ 	clear: both;
+}
+
+section.register fieldset.stap-5 .creditcard-number-wrapper div,
+section.register fieldset.stap-5 .datum-wrapper div {
+	float:left;
+	width:120px;
+	margin-right:40px;
+	height:60px;
+}
+
+section.register fieldset.stap-5 .creditcard-number-wrapper div label,
+section.register fieldset.stap-5 .datum-wrapper div label {
+	position: relative;
+	left:135px;
+	top:-45px;
+	display:block;
+}
+section.register fieldset.stap-5 .naam {
+	width:580px;
+}
+
+section.register fieldset.stap-5 .cvc {
+	width:40px;
+}
+section.register fieldset.stap-5 .radio-stap-3 .radio.white {
+	color:#000;
+}
 
 

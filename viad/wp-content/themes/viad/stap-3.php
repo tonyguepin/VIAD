@@ -39,7 +39,7 @@ get_header();
 			<div class="register-kop">
 				<div class="container">
 					<div class="keur-merk-wrapper">
-						<img class="keurmerk" src="<?php bloginfo('template_directory');?>/img/keurmerk-registratie.png" />
+						<img class="keurmerk" src="<?php bloginfo('template_directory');?>/img/keurmerk-registratie.png" alt="" />
 						<h2>VIAD Keurmerk </h2>
 						<p>Vul hieronder je gegevens in</p>
 					</div>
@@ -74,7 +74,7 @@ get_header();
 			</div>
 			<div class="register-akkoord">
 				<div class="container">
-					<fieldset class="stap-2">								
+					<fieldset class="stap-3">								
 							<h3 class="white no-bold">En dan nog iets</h3>
 							<p class="white no-bold">Bij VIAD vinden we eerlijkheid en transparantie belangrijk. Dit is dan ook een voorwaarde om toegelaten te kunnen worden bij VIAD. Door akkoord te gaan met het VIAD-keurmerk beloof je je profiel en competenties naar waarheid te hebben ingevuld. Je hanteert het principe van afspraak = afspraak. Dit mogen we van jou verwachten maar dit mag jij natuurlijk ook van ons en onze klanten verwachten.</p>
 						<div class="radio-stap-3">
