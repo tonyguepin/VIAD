@@ -534,7 +534,8 @@ function viad_display_user_info() {
 		}
 
 		$html .= '<div class="thumb profile_pic" style="background-image:url('.$thumb[0].');"></div>';
-	 	$html .= '<h4><a href="'.get_permalink(viad_get_profile_id()[0]).'">'.$user_meta['full_name'][0].'</a></h4>';
+		$profile_id = viad_get_profile_id();
+	 	$html .= '<h4><a href="'.get_permalink($profile_id[0]).'">'.$user_meta['full_name'][0].'</a></h4>';
 		if($tags->name) {
 			$html .= '		<h5>'.$tags->name.'</h5>';
 		} else {

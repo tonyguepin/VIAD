@@ -641,6 +641,7 @@ $(document).ready(function() {
 	/////////////////////
 	// REVIEWS
 	/////////////////////
+/*
 	var rating = 0;
 	$(document).on('click', '.new-review', function(e){
 		e.preventDefault();
@@ -664,6 +665,7 @@ $(document).ready(function() {
 		$(this).prevAll().find('.star').css({'fill':'orange'});
 		rating = $(this).attr('class').split(' ')[2].replace('rate_','');
 	});
+*/
 
 	$(document).on('click', '.approve-review', function(e){
 		e.preventDefault();
@@ -677,6 +679,7 @@ $(document).ready(function() {
 	            'id' : id
 	        },
 	        success:function(json) {
+	        	screen_notification('Review geplaatst');
 				$(json).each(function(i) {
 					$(json[i].container).html(json[i].html);
 				});
@@ -689,62 +692,115 @@ $(document).ready(function() {
 		
 		var li = $(this).parent();		
 		var text_area = $('.decline-text[data-id="'+id+'"]');			
-		
+
+
 		if(text_area.is(':visible'))  {
+
+
+
 		    $.ajax({
 	    	    url: ajaxurl,
-		        dataType: 'JSON',
+/*  		        dataType: 'JSON',  */
 		        data: {
 	        	    'action':'viad_decline_review',
 	    	        'id' : id,
-/* 	    	        'msg': $('') */
+ 	    	        'msg': text_area.html()
 		        },
 		        success:function(json) {
+
+					console.log(json);
+
+/*
+		        	screen_notification('Bericht verzonden');
 					$(json).each(function(i) {
 						$(json[i].container).html(json[i].html);
 					});
+*/
 		        }
 			});	
+
 		} else {
 			var h = li.height();
 			li.css({'height':(h+100)+'px'});
 			text_area.show();
 		}
 	});
-	
-	/////////////////////
-	// NEW ITEM
-	/////////////////////
-	$(document).on('click', '.new-item', function(e) {
+	$(document).on('click', '.approve-review', function(e){
 		e.preventDefault();
 		var id = $(this).data('id');
-		var type = $(this).data('type');
-/*   		var container = $(this).data('container');  */
 		
-		
-		var btn = $(this);
 	    $.ajax({
 	        url: ajaxurl,
+	        dataType: 'JSON',
 	        data: {
-	            'action':'viad_new_item',
-	            'id' : id,
-	            'type' : type
+	            'action':'viad_approve_review',
+	            'id' : id
 	        },
-	        success:function(html) {
-	        	if(type == 'projects') {	
-					window.location = html;	
-				} 
-				else if(type == 'blog') {
-					btn.before(html);
-					btn
-					.text('Plaatsen')
-					.removeClass('new-item')
-					.addClass('save-item');
-				}       	
-				        	
+	        success:function(json) {
+	        	screen_notification('Review geplaatst');
+				$(json).each(function(i) {
+					$(json[i].container).html(json[i].html);
+				});
 	        }
-	    });
-	 });   
+		});	
+	});
+	var review_text = '';
+	$(document).on('click', '.edit-review', function(e) {
+		e.preventDefault();
+		var id = $(this).data('id');
+		var text_area = $('.review-content[data-id="'+id+'"]');	
+		text_area.attr('contenteditable',true);
+		text_area.focus();
+		review_text	= text_area.html();	
+		$(this).text('Wijzigingen opslaan').removeClass('edit-review').addClass('save-review').after('<a href="#" class="cancel-review" data-id="'+id+'">Annuleren</a>');
+ 	});   
+	$(document).on('click', '.cancel-review', function(e) {
+		e.preventDefault();
+		var id = $(this).data('id');
+		$('.review-content[data-id="'+id+'"]').html(review_text).attr('contenteditable',false);	
+	});
+
+	$(document).on('click', '.save-review', function(e) {
+		e.preventDefault();
+		var id = $(this).data('id');
+		var text_area = $('.review-content[data-id="'+id+'"]');	
+	    $.ajax({
+	        url: ajaxurl,
+	        dataType: 'JSON',
+	        data: {
+	            'action':'viad_save_review',
+	            'id' : id,
+	            'text':text_area.html()
+	        },
+	        success:function(json) {
+	        	screen_notification('Review opgeslagen');
+				$(json).each(function(i) {
+					$(json[i].container).html(json[i].html);
+				});
+	        }
+		});	
+	});
+	$(document).on('click', '.submit-review', function(e) {
+		e.preventDefault();
+		var id = $(this).data('id');
+	    $.ajax({
+	        url: ajaxurl,
+	        dataType: 'JSON',
+	        data: {
+	            'action':'viad_submit_review',
+	            'id' : id
+	        },
+	        success:function(json) {
+	        	screen_notification('Review ingestuurd');
+				$(json).each(function(i) {
+					$(json[i].container).html(json[i].html);
+				});
+	        }
+		});	
+	});
+ 	
+ 	
+ 	
 	/////////////////////
 	// SAVE / PUBLISH PROJECT
 	/////////////////////
