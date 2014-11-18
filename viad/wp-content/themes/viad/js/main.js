@@ -320,6 +320,7 @@ $(document).ready(function() {
 	/////////////////////
 	// DISPLAY FROM USER INFOBOX
 	/////////////////////
+/*
 	$(document).on('click', '.display', function(e) {
 		e.preventDefault();
 		var func = $(this).data('display').replace('-','_');
@@ -344,6 +345,7 @@ $(document).ready(function() {
 	    });
 
 	 });  
+*/
 
 	
 	/////////////////////
@@ -488,6 +490,7 @@ $(document).ready(function() {
 	/////////////////////
 	// TOGGLE JOBS IN WIDGET 
 	/////////////////////
+/*
 	$(document).on('click', '.toggle-jobs', function(e) {
 		e.preventDefault();
 		var id = $(this).data('id');	
@@ -495,6 +498,7 @@ $(document).ready(function() {
 //		$('.job.hidden[data-id="'+id+'"]').show();
 	
 	});
+*/
 	/////////////////////
 	// SAVE PROJECT 
 	/////////////////////
@@ -660,23 +664,52 @@ $(document).ready(function() {
 		$(this).prevAll().find('.star').css({'fill':'orange'});
 		rating = $(this).attr('class').split(' ')[2].replace('rate_','');
 	});
+
 	$(document).on('click', '.approve-review', function(e){
 		e.preventDefault();
-		var id = $(this).attr('id').split('-')[1];
-		var approve = $(this).attr('id').split('-')[0];
+		var id = $(this).data('id');
 		
 	    $.ajax({
 	        url: ajaxurl,
+	        dataType: 'JSON',
 	        data: {
 	            'action':'viad_approve_review',
-	            'id' : id,
-	            'approve':approve,
+	            'id' : id
 	        },
-			success:function(html) {
-				console.log(html);
-			}
+	        success:function(json) {
+				$(json).each(function(i) {
+					$(json[i].container).html(json[i].html);
+				});
+	        }
 		});	
+	});
+	$(document).on('click', '.decline-review', function(e){
+		e.preventDefault();
+		var id = $(this).data('id');
 		
+		var li = $(this).parent();		
+		var text_area = $('.decline-text[data-id="'+id+'"]');			
+		
+		if(text_area.is(':visible'))  {
+		    $.ajax({
+	    	    url: ajaxurl,
+		        dataType: 'JSON',
+		        data: {
+	        	    'action':'viad_decline_review',
+	    	        'id' : id,
+/* 	    	        'msg': $('') */
+		        },
+		        success:function(json) {
+					$(json).each(function(i) {
+						$(json[i].container).html(json[i].html);
+					});
+		        }
+			});	
+		} else {
+			var h = li.height();
+			li.css({'height':(h+100)+'px'});
+			text_area.show();
+		}
 	});
 	
 	/////////////////////

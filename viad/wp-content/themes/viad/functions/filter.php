@@ -257,15 +257,16 @@ function viad_filter_projects() {
 			echo viad_content($first_part);
 			echo '</div>';
 			echo '<div class="project-meta">';
-			$favorites = viad_get_favorites();
-			if($favorites) {
-				if(in_array($match->ID, $favorites)) {
-					echo '<a href="#" class="toggle-favorite" title="Toevoegen aan favorieten" data-id="'.$match->ID.'">'.viad_star_svg('blue').'</a>';
-				} else {
-					echo '<a href="#" class="toggle-favorite" title="Toevoegen aan favorieten" data-id="'.$match->ID.'">'.viad_star_svg().'</a>';
+			if(viad_get_user_type() == 'professionals') {
+				$favorites = viad_get_favorites();
+				if($favorites) {
+					if(in_array($match->ID, $favorites)) {
+						echo '<a href="#" class="toggle-favorite" title="Toevoegen aan favorieten" data-id="'.$match->ID.'">'.viad_star_svg('blue').'</a>';
+					} else {
+						echo '<a href="#" class="toggle-favorite" title="Toevoegen aan favorieten" data-id="'.$match->ID.'">'.viad_star_svg().'</a>';
+					}
 				}
 			}
-			echo '<div style="height:40px; display:block;"><span id="melding'.$match->ID.'" class="melding">Toegevoegd aan <br/>favorieten</span></div>';
 			if(is_numeric($pm['deadline'][0])) {
 				echo '<div><span class="icon">8</span> <span class="text">'.date_i18n('d F Y',$pm['deadline'][0]).'</span></div>';
 			}

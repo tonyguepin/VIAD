@@ -273,3 +273,12 @@ li.dashboard .icon {
 	color:#00ADEF;
 }
 
+/* DB REVIEWS */
+
+.decline-text {
+	border:1px solid #ccc;
+	display:none;
+	height:100px;
+}
+
+

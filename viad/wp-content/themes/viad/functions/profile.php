@@ -29,19 +29,6 @@ function viad_browse_calendar() {
 }
 add_action( 'wp_ajax_viad_browse_calendar', 'viad_browse_calendar' );
 
-function viad_approve_review() {
-	print_r($_REQUEST);
-	
-	$a = 0;
-	if($_REQUEST['approve'] == 'a') {
-		$a = 1;
-	}
-	update_post_meta($_REQUEST['id'],'approved',$a);
-	
-	exit();
-}
-add_action( 'wp_ajax_viad_approve_review', 'viad_approve_review' );
-
 function viad_write_review() {
 
 	$user_meta = get_user_meta(get_current_user_id(),'full_name');

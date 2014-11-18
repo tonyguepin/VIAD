@@ -1,9 +1,6 @@
 <?php
 /* Template Name:Frontpage */
 ?>
-<section class="projects overview collapsed">
-	<?php echo viad_archive_projects('frontpage'); ?>
-</section>
 
 <section class="frontpage">
 <?php	

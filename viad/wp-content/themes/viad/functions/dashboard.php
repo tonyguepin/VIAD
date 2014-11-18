@@ -31,9 +31,79 @@ function viad_db_payment() {
 	return $html;
 }
 function viad_db_reviews() {
-	$html .= '<h2>Reviews</h2>';
+	
+	$html .= '<div class="col2">';	
+	$html .= '<h2>Reviews over mij</h2>';
+	$reviews = get_posts(array('post_type' => 'reviews', 'posts_per_page' => -1, 'author' => get_current_user_id()));
+	if($reviews) {
+		$html .= '<ul class="dashboard">';
+		foreach($reviews as $review) {
+
+			$rev_meta = get_post_meta($review->ID);	
+		
+			$html .= '<li class="dashboard">';
+			$html .= $review->ID.'<br/>';
+			$html .= 'Approved '.$rev_meta['approved'][0].'<br/>';
+			$html .= '<a href="#">'.$review->post_title.'</a>';
+			$html .= '<p class="review-text">'.$review->post_content.'<p>';
+			
+			if($rev_meta['approved'][0] == 0) {
+				$html .= '<a href="#" class="button approve-review" data-id="'.$review->ID.'">Review plaatsen</a>';			
+			}
+			$html .= '<div class="decline-text" data-id="'.$review->ID.'" contenteditable="true">Stuur een bericht</div>';
+			$html .= '<a href="#" class="button decline-review" data-id="'.$review->ID.'">Review afwijzen</a>';			
+			$html .= '</li>';
+
+		}
+	}
+	
+	
+	$html .= '</ul>';
+
+	$html .= '</div>';
+
+
+	$html .= '<div class="col2">';	
+	$html .= '<h2>Reviews van mij</h2>';
+	$reviews = get_posts(array('post_type' => 'reviews', 'posts_per_page' => -1, 'meta_key' => 'written_by', 'meta_value' => get_current_user_id()));
+	if($reviews) {
+		foreach($reviews as $review) {
+			$rev_meta = get_post_meta($review->ID);	
+			$html .= $review->ID.'<br/>';
+			$html .= 'Approved '.$rev_meta['approved'][0].'<br/>';
+			$html .= $review->post_title.'<br/>';
+			$html .= $review->post_content.'<br/>';
+			$html .= '<br/>----------------------<br/><br/>';
+		}
+	}
+	$html .= '</div>';	
+
+	
 	return $html;
 }
+
+function viad_approve_review() {
+	update_post_meta($_REQUEST['id'],'approved', 1);
+	$update = array();
+	$update[0]['container'] = 'article.content'; 
+	$update[0]['html'] = viad_db_reviews(); 
+	echo json_encode($update);
+	exit();
+}
+add_action( 'wp_ajax_viad_approve_review', 'viad_approve_review' );
+
+function viad_decline_review() {
+	update_post_meta($_REQUEST['id'],'approved', 0);
+	$update = array();
+	$update[0]['container'] = 'article.content'; 
+	$update[0]['html'] = viad_db_reviews(); 
+	echo json_encode($update);
+	exit();
+}
+add_action( 'wp_ajax_viad_decline_review', 'viad_decline_review' );
+
+
+
 
 function viad_db_professionals() {
 	$html .= '<h2>Mijn professionals</h2>';

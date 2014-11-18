@@ -495,17 +495,20 @@ section.collapsed .gradient i {
 	margin:10px;
 	color:white;
 }   
-
 .user-info input[type="text"],.user-info input[type="password"] {
-	width:170px;
 	border:none;
 	background:#f1f1f3;
 	padding:5px;	
+	width:150px;
 	font-family: 'Gotham SSm A', 'Gotham SSm B'; font-weight: 400; font-style: normal;
-	color:#555;	
+	color:#666;	
 }   
 .user-info input[type="submit"] {
 	width:100%;
+}
+.user-info input[type="checkbox"] {
+	display:block;
+	float:left;
 }
    
 
@@ -1390,7 +1393,7 @@ aside.filter option {
 	font-weight: 700; 
 	font-style: normal;
 }
-.professionals .project-result h3 a:link, .project-result h3 a:visited {
+.professionals .project-result h3 a:link, .professionals .project-result h3 a:visited {
 	color:#00ADEF;
 }
 
