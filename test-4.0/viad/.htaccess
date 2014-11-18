@@ -1,8 +1,0 @@
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /viad-trunk/viad/
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /viad-trunk/viad/index.php [L]
-</IfModule>
