@@ -54,7 +54,7 @@
 </section>
 
 <section class="profile reviews">
-		<?php //echo viad_display_reviews($post->post_author);?>	
+		<?php echo viad_display_reviews($post->post_author);?>	
 </section>
 
 

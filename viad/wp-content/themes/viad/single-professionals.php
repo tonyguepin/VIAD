@@ -6,6 +6,10 @@
 
 
 <section class="profile professionals">
+<?			
+			$umeta = get_user_meta(get_current_user_id());
+			print_r($umeta);
+?>
 	<div class="container">
 
 		<aside class="left">
@@ -51,11 +55,11 @@
 </section>
 
 <section class="profile calendar">
-		<?php //echo viad_display_calendar($post->post_author);?>	
+		<?php echo viad_display_calendar($post->post_author);?>	
 </section>
 
 <section class="profile reviews">
-		<?php //echo viad_display_reviews($post->post_author);?>	
+		<?php echo viad_display_reviews($post->post_author);?>	
 </section>
 
 

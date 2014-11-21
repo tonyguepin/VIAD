@@ -695,27 +695,19 @@ $(document).ready(function() {
 
 
 		if(text_area.is(':visible'))  {
-
-
-
 		    $.ajax({
 	    	    url: ajaxurl,
-/*  		        dataType: 'JSON',  */
+  		        dataType: 'JSON',  
 		        data: {
 	        	    'action':'viad_decline_review',
 	    	        'id' : id,
  	    	        'msg': text_area.html()
 		        },
 		        success:function(json) {
-
-					console.log(json);
-
-/*
 		        	screen_notification('Bericht verzonden');
 					$(json).each(function(i) {
 						$(json[i].container).html(json[i].html);
 					});
-*/
 		        }
 			});	
 

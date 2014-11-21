@@ -76,6 +76,8 @@ function viad_save_profile() {
 			
 			if($key == 'full_name') {
 				wp_update_post(array('ID' => $p_id, 'post_title' => $save['val']));
+				update_user_meta($u_id, 'full_name', $save['val']);
+
 			}
 			
 		} else if(substr($save['key'],0,2) == 'pm') {

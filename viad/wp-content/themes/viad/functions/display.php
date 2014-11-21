@@ -350,43 +350,41 @@ function viad_display_reviews($user_id) {
 	$profile = get_post($profile_id[0]);
 	
 	
-	$reviews = get_posts(array('post_type' => 'reviews', 'author' => $user_id, 'meta_key'=>'approved','meta_value'=>1));
+	$reviews = get_posts(array('post_type' => 'reviews', 'author' => $user_id, 'meta_key'=>'approved','meta_value'=> 1));
 	
 	echo '<ul class="reviews">';
 	foreach($reviews as $r) {
 		$r_meta = get_post_meta($r->ID);
 		$w_meta = get_user_meta($r_meta['written_by'][0]);
-
+		
+		
 		$html .=  '<li class="review">';
-		$thumb = wp_get_attachment_image_src( $w_meta['profile_pic'][0], 'thumbnail');
-		$html .= '<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
-		$html .= '<div class="review-content">';
-		$html .=  '<h4>'.$w_meta['full_name'][0].'<br/>';
-		$html .= '<span>'.date_i18n('j F Y', strtotime($r->post_date)).'</span></h4>';
-		$html .=  '<p>'.$r->post_content.'</p>';
-		$html .= '</div>';
 		
-		$html .= '<div class="rating">';
+		$html .= '<div class="review-left">';
+		$thumb = viad_get_attachment_image_src( $w_meta['profile_pic'][0], 'thumbnail');
 
-		$html .= '<p>Waardering</p>';
-		for($i = 0; $i < 5; $i++) {
-			if($i < $r_meta['rating'][0]) {
-				$html .= viad_star_svg('rate-star yellow');
-			} else {
-				$html .= viad_star_svg('rate-star white');
-			}
-		}
-		$html .= '<h2>'.$r_meta['rating'][0].'</h2>';
-		
+		$html .= '	<div class="thumb" style="background-image:url('.$thumb[0].')"></div>';
+		$html .= '	<h4>'.$w_meta['full_name'][0].'</h4>';
 		$html .= '</div>';
-		
-		$html .= '<br class="clear" />';
-		$html .=  '</li>';	
+
+		$html .= '<div class="review-content">';
+		$html .= '	<h4>'.$r->post_title.'</h4>';
+		$html .= viad_content($r->post_content);
+		$html .= '</div>';
+
+		$html .= '<div class="review-right">';
+		$html .= '	<h4>'.$r->post_title.'</h4>';
+		$html .= '</div>';
+
+		$html .= '</li>';	
 	}	
 	$html .=  '</ul>';
 	
+	$html .= '<div class="pagination">';
+	$html .=  '<p>1 2 3</p>';
+	$html .=  '</div>';
 	
-	if(!viad_is_author($profile->post_author)) {
+	//if(!viad_is_author($profile->post_author)) {
 		$html .= '<div id="review-text" contenteditable="true">Schrijf iets over...</div>';	
 		$html .= '<div class="review-rate-star">';
 		$html .= viad_star_svg('rate rate_1');
@@ -395,8 +393,8 @@ function viad_display_reviews($user_id) {
 		$html .= viad_star_svg('rate rate_4');
 		$html .= viad_star_svg('rate rate_5');
 		$html .= '</div>';
-		$html .= '<a href="#" class="button ongreen new-review" data-id="'.$user_id.'">Review plaatsen</a>';
-	}
+		$html .= '<a href="#" class="button new-review" data-id="'.$user_id.'">Review plaatsen</a>';
+	//}
 	
 	$html .= '</div>';//container
 

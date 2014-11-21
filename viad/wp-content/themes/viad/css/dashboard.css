@@ -13,12 +13,12 @@
 /* 	width:640px; */
 }
 
-.content .col, .content .col2 {
+.content .col, .content .col2, .col2 {
 	width:400px;
 	float:left;
 	margin-left:20px;
 }
-.content .col1 {
+.content .col1, .col1 {
 	width:200px;
 	float:left;
 	margin-left:20px;

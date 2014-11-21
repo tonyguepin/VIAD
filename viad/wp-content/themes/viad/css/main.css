@@ -20,9 +20,7 @@
 */
 
 h2 {
-	text-transform: uppercase;
 	text-align: center;
-
 }
 
 .bold {
@@ -647,18 +645,83 @@ aside h2 {
 /* ==========================================================================
    REVIEWS
    ========================================================================== */
-.review .thumb {
-	float:left;
-	margin-left:60px;
-}   
 
+section.reviews {
+	background: #00ADEF;
+	color:white;
+}	
+
+
+section.reviews ul.reviews {
+	list-style:none;
+	padding:0px;	
+}
+ 
+section.reviews li.review {
+	padding:0px;
+	clear: both;
+	float:left;
+	display: block;
+	overflow:hidden;
+	position: relative;
+	min-height:150px;
+}
+section.reviews li.review:nth-child(even) {
+	background: rgba(255,255,255,.2);
+}
+
+section.reviews li.review .thumb {
+	width:80px;
+	height:80px;
+	margin-left:60px;
+	background-position:center center;
+	background-size:cover;
+	border-radius:100%;
+}   
+section.reviews .review-left {
+	padding:20px 0px 20px 0px;
+	top:0px;
+	bottom:0px;
+	background: rgba(255,255,255,.1);
+ 	float:left; 
+ 	position: absolute;
+	width:200px;	
+
+}   
+section.reviews .review-left h4{
+	margin:10px 0px 0px 0px;
+	text-align: center;
+}
+section.reviews .review-content {
+ 	float:left;
+	width:640px;	
+	margin-left:220px;
+}
+section.reviews .review-content div {
+	margin-bottom:20px;
+}
+section.reviews .review-right {
+ 	float:left;
+ 	margin-left:20px;
+	width:200px;	
+}
+
+
+/*
+.review .rating {
+	float:right;
+	width:200px;
+}
+
+*/
+/*
 .review .rating h2 {
 	text-align: left;
-	margin:0px;
+	margin-left:20px;
 }
 .review .rating p {
-	font-size:12px;
-	margin:0px;
+	font-size:1em;
+	margin-left:20px;
 
 }
 .review .rate-star {
@@ -685,16 +748,8 @@ aside h2 {
 .review-rate-star .rate:hover {
 	cursor:pointer;
 }
+*/
 
-.review-content {
-	float:left;
-	width:600px;
-	margin-left:40px;
-}
-.review .rating {
-	float:right;
-	width:200px;
-}
 
    
 /* ==========================================================================
@@ -981,7 +1036,7 @@ CALENDAR
 */
 
 section.calendar {
-	background:#404042;
+	background:#f1f1f1;
 	color:#888;	
 }
 section.calendar .month{
@@ -997,26 +1052,29 @@ section.calendar .month{
 }
 
 .browse-calendar-container {
-	clear: both;
 	position: absolute;
-	width:100%;
-	top:0.83em;
+	z-index: 10;
+	width: 1180px;
+	left:-50px;
+	top:160px;
 }
 a.browse-calendar:link, a.browse-calendar:visited {
 	color:#888;
-	font-size: 1.5em;
+	font-size: 3em;
 	text-decoration: none;
 }
 a.browse-calendar:hover, a.browse-calendar:visited:hover {
 	color:#00ADEF;
 }
-
+section.calendar .container {
+	overflow:visible;
+}
 section.calendar .month:nth-child(7) {
 	margin-right:0px;
 }
 
 section.calendar .title {
-	background:#f1f1f3;
+	background:#E6E6E6;
 	height:50px;
 	top:0px;
 	position: absolute;
@@ -1077,40 +1135,6 @@ section.calendar .day.orange {
 
 section.calendar .day.na {
 	color:red;
-}
-
-/* 
-Reviews 
-*/
-
-section.reviews {
-	background: #8ec63f;
-	color:white;
-}	
-
-section.reviews *[contenteditable="true"] {
-	color:#666;
-}
-
-ul.reviews {
-	list-style:none;
-	padding:0px;	
-}
-
-li.review {
-	padding-top:20px;
-	padding-bottom:20px;
-	border-bottom:1px solid white;
-}
-li.review:nth-child(2) {
-	border-top:1px solid white;
-}
-li.review .thumb {
-	width:80px;
-	height:80px;
-	background-position:center center;
-	background-size:cover;
-	border-radius:100%;
 }
 
 /* ==========================================================================
