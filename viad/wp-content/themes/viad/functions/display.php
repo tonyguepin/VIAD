@@ -332,9 +332,7 @@ function viad_display_projects($user_id) {
 }
 function viad_display_user_projects() {
 	$html =	 '<div class="container">';
-
 	$html .= '<h2>Opdrachten</h2>';
-
 	$html .= '</div>';
 	
 }
@@ -351,8 +349,8 @@ function viad_display_reviews($user_id) {
 	
 	
 	$reviews = get_posts(array('post_type' => 'reviews', 'author' => $user_id, 'meta_key'=>'approved','meta_value'=> 1));
-	
-	echo '<ul class="reviews">';
+
+	$html .= '<ul class="reviews clearfix">';
 	foreach($reviews as $r) {
 		$r_meta = get_post_meta($r->ID);
 		$w_meta = get_user_meta($r_meta['written_by'][0]);
@@ -373,7 +371,17 @@ function viad_display_reviews($user_id) {
 		$html .= '</div>';
 
 		$html .= '<div class="review-right">';
-		$html .= '	<h4>'.$r->post_title.'</h4>';
+		$html .= '	<h4>Beoordeling</h4>';
+		//if(!viad_is_author($profile->post_author)) {
+			$html .= '<div class="review-rate-star">';
+			$html .= viad_review_svg('rate yellow rate_1 yellow');
+			$html .= viad_review_svg('rate yellow rate_2 yellow');
+			$html .= viad_review_svg('rate yellow rate_3 yellow');
+			$html .= viad_review_svg('rate rate_4 yellow');
+			$html .= viad_review_svg('rate rate_5');
+			$html .= '</div>';
+		//}
+
 		$html .= '</div>';
 
 		$html .= '</li>';	
@@ -381,23 +389,12 @@ function viad_display_reviews($user_id) {
 	$html .=  '</ul>';
 	
 	$html .= '<div class="pagination">';
-	$html .=  '<p>1 2 3</p>';
-	$html .=  '</div>';
-	
-	//if(!viad_is_author($profile->post_author)) {
-		$html .= '<div id="review-text" contenteditable="true">Schrijf iets over...</div>';	
-		$html .= '<div class="review-rate-star">';
-		$html .= viad_star_svg('rate rate_1');
-		$html .= viad_star_svg('rate rate_2');
-		$html .= viad_star_svg('rate rate_3');
-		$html .= viad_star_svg('rate rate_4');
-		$html .= viad_star_svg('rate rate_5');
-		$html .= '</div>';
-		$html .= '<a href="#" class="button new-review" data-id="'.$user_id.'">Review plaatsen</a>';
-	//}
-	
+	$html .= '<a href="#" class="page-nav selected" data-page="#FIXME">1</a>';
+	$html .= '<a href="#" class="page-nav" data-page="#FIXME">2</a>';
+	$html .= '<a href="#" class="page-nav" data-page="#FIXME">3</a>';
+	$html .= '<a href="#" class="page-nav selected" data-page="#FIXME"><svg version="1.1" id="Laag_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15.4 13.6" enable-background="new 0 0 15.4 13.6" xml:space="preserve"><polygon class="arrow" points="8.6,0 7.2,1.3 11.7,5.9 0,5.9 0,7.8 11.7,7.8 7.2,12.3 8.6,13.6 15.4,6.8 "/></svg>	</a>';
+	$html .= '</div>';
 	$html .= '</div>';//container
-
 	return $html;	
 
 }
@@ -581,7 +578,6 @@ function viad_display_blog($user_id) {
 	$html .= '<h2>Blog</h2>';
 	$html .=	'<div>';
 	$blog = get_posts(array('post_type' => 'blog','author' => $user_id, 'posts_per_page' => -1));
-	$year = date('Y');
 	$html .= '<div class="container"><p>'.$year.'</p>';
 	if($blog) {
 		$i = 0;
@@ -592,17 +588,14 @@ function viad_display_blog($user_id) {
 				$html .= '<div class="container"><p>'.$year.'</p>';
 				$i = 0;
 			}
-			if($i%2==0) {
-				$class = 'left';			
-			} else {
-				$class = 'right';			
-			}
-			$html .= '<article class="'.$class.'">';
+			$html .= '<article class="blog-bericht">';
+			$html .= '<img src="http://placehold.it/420x275" alt="" />';
 			$html .= '<h3>'.$b->post_title.'</h3>';			
-			$html .= viad_content($b->post_content);
 			$html .= '<div class="date">';
-			$html .= $b->post_date;
+			$html .= 'Geplaatst op '.date('n M Y',strtotime($b->post_date));
 			$html .= '</div>';
+			$html .= viad_content($b->post_content);
+			$html .= '<a href="#" class="blog-lees-meer">Lees meer</a>';
 			$html .= '</article>';
 			$i++;
 		}
@@ -619,6 +612,16 @@ function viad_display_blog($user_id) {
 		$html .= '<a class="button edit onblue new-item" data-id="'.$user_id.'" data-type="blog">Nieuw bericht</a>';
 		$html .= '</div>';
 	}
+	
+	$html .= '<div class="pagination">';
+	$html .= '<a href="#" class="page-nav selected" data-page="#FIXME">1</a>';
+	$html .= '<a href="#" class="page-nav" data-page="#FIXME">2</a>';
+	$html .= '<a href="#" class="page-nav" data-page="#FIXME">3</a>';
+	$html .= '<a href="#" class="page-nav selected" data-page="#FIXME"><svg version="1.1" id="Laag_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15.4 13.6" enable-background="new 0 0 15.4 13.6" xml:space="preserve"><polygon class="arrow" points="8.6,0 7.2,1.3 11.7,5.9 0,5.9 0,7.8 11.7,7.8 7.2,12.3 8.6,13.6 15.4,6.8 "/></svg>	</a>';
+	$html .= '</div>';
+	$html .= '</div>';//container
+	
+	
 	$html .= '</div>';
 	return $html;
 }

@@ -331,7 +331,11 @@ function viad_star_svg($class = 'gray') {
 				<polygon class="star" points="22.558,11.583 16.645,10.725 14.002,5.366 11.357,10.725 5.443,11.583 9.724,15.753 8.712,21.643 14.002,18.862 19.29,21.643 18.28,15.753 	"/>
 			</svg>';
 }
-
+function viad_review_svg($class = 'gray') {
+	return '<svg class="svg-star '.$class.'" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+				<polygon class="star" points="22.558,11.583 16.645,10.725 14.002,5.366 11.357,10.725 5.443,11.583 9.724,15.753 8.712,21.643 14.002,18.862 19.29,21.643 18.28,15.753 	"/>
+			</svg>';
+}
 function viad_arrow_svg($class = 'gray') {
 	return '<svg class="svg-arrow '.$class.'" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
 				<circle class="circle" cx="14" cy="14" r="14"/>

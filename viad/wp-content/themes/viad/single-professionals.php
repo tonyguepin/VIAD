@@ -34,6 +34,11 @@
 			echo '<li>'.$post_meta['hours'][0].' uur per week</li>';
 			echo '</ul>';			
 
+			echo '<h3>Regio</h3>';
+			echo '<ul>';			
+			echo '<li>'.$post_meta['hours'][0].' uur per week</li>';
+			echo '</ul>';			
+
 			echo '<h3>Tarief</h3>';
 			echo '<ul>';			
 			echo '<li>&euro; '.$post_meta['price'][0].' per uur</li>';
@@ -62,11 +67,46 @@
 		<?php echo viad_display_reviews($post->post_author);?>	
 </section>
 
+<section class="profile review-plaatsen">
+			<div class="register-kop">
+				<div class="container">
+					<h2>Schrijf iets over <?php printf("%s %s", $umeta['first_name'][0], $umeta['last_name'][0]) ?></h2>	
+				</div>
+			</div>
+			
+			<div class="register-form">
+				<div class="container">
+					<fieldset class="fieldset-review-plaatsen">								
+						<div class="name-wrapper">
+							<p>Naam *</p>
+							<input class="required" name="name" type="text" placeholder="Naam"/>
+						</div>
+						<p>E-mailadres *</p>
+						<input class="required" name="email" type="email"  placeholder="E-mailadres"/>
+						<p>Uw review *</p>
+						<textarea class="required" name="review"  placeholder="Review plaatsen"></textarea>
+						<div class="review-plaatsen-label">Geef uw waardering op voor <?php printf("%s %s", $umeta['first_name'][0], $umeta['last_name'][0]) ?>:</div> 
+						<div class="review-plaatsen-rating">
+							<?
+							echo viad_star_svg('rate rate_1');
+							echo viad_star_svg('rate rate_2');
+							echo viad_star_svg('rate rate_3');
+							echo viad_star_svg('rate rate_4');
+							echo viad_star_svg('rate rate_5');
+							?>
+						</div>
+						<a href="#" class="button new-review" data-id="'.$user_id.'">Review plaatsen</a>
+					</fieldset>	
+				</div>
+			</div>
+
+</section>
 
 
 <section class="profile blog">
-		<?php //echo viad_display_blog($post->post_author);?>	
+		<?php echo viad_display_blog($post->post_author);?>	
 </section>
+
 <?php if(viad_is_author($post->post_author)) { ?>
 
 
