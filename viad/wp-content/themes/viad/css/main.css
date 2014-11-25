@@ -640,10 +640,52 @@ aside h2 {
 	color:#00adef;
 }
 
+/* ==========================================================================
+   PROFILE PROFESSIONAL REVIEWS
+   ========================================================================== */
+
+section.profile.professionals h3.functies:before {
+    content: "";
+	background: url("../img/icon-profile-functies.svg") no-repeat;
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 0 6px 0 0;
+}	
+
+section.profile.professionals h3.beschikbaar:before {
+    content: "";
+	background: url("../img/icon-profile-beschikbaar.svg") no-repeat;
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 0 6px 0 0;
+}	
+section.profile.professionals h3.regio:before {
+    content: "";
+	background: url("../img/icon-profile-regio.svg") no-repeat;
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 0 6px 0 0;
+}	
+
+section.profile.professionals h3.tarief:before {
+    content: "";
+	background: url("../img/icon-profile-euro.svg") no-repeat;
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 0 6px 0 0;
+}	
 
    
 /* ==========================================================================
-   REVIEWS
+   PROFILE PROFESSIONAL REVIEWS
    ========================================================================== */
 
 section.reviews {

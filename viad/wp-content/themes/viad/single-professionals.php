@@ -8,7 +8,7 @@
 <section class="profile professionals">
 <?			
 			$umeta = get_user_meta(get_current_user_id());
-			print_r($umeta);
+			//print_r($umeta);
 ?>
 	<div class="container">
 
@@ -19,7 +19,7 @@
 				echo '<a href="#/dashboard" class="button gray">Dashboard</a>';
 			}
 			
-			echo '<h3>Functies</h3>';
+			echo '<h3 class="functies">Functies</h3>';
 			$functies = wp_get_post_tags($post->ID);
 			echo '<ul>';			
 			foreach($functies as $f) {
@@ -29,17 +29,17 @@
 			
 			$post_meta = get_post_meta($post->ID);
 			
-			echo '<h3>Beschikbaar</h3>';
+			echo '<h3 class="beschikbaar">Beschikbaar</h3>';
 			echo '<ul>';			
 			echo '<li>'.$post_meta['hours'][0].' uur per week</li>';
 			echo '</ul>';			
 
-			echo '<h3>Regio</h3>';
+			echo '<h3 class="regio">Regio</h3>';
 			echo '<ul>';			
 			echo '<li>'.$post_meta['hours'][0].' uur per week</li>';
 			echo '</ul>';			
 
-			echo '<h3>Tarief</h3>';
+			echo '<h3 class="tarief">Tarief</h3>';
 			echo '<ul>';			
 			echo '<li>&euro; '.$post_meta['price'][0].' per uur</li>';
 			echo '</ul>';			
