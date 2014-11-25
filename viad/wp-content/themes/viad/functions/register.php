@@ -1,10 +1,42 @@
 <?php
 
+function viad_start_session() {
+    if(!session_id()) {
+        session_start();
+    }
+}
+add_action('init', 'viad_start_session', 1);
+
+function viad_register_step($step = 1) {
+	
+	
+	foreach($_POST as $key => $val){
+		if($key != 'step' && $key != 'action') {
+			$_SESSION[$key] = $val;
+		}
+	}
+	print_r($_SESSION);
+		
+	
+	if($_POST['step']) {
+		$step = $_POST['step']; 
+	}
+	
+	include 'stap-'.$step.'.php';
+
+	if($_POST['action']) {
+		exit();
+	}
+}
+add_action('wp_ajax_nopriv_viad_register_step','viad_register_step');
 
 
 
 function viad_register() {
+
+	$html .= 'Voltooien aanmaken etc';
 	
+/*
 	$user_name = $_POST['name'].'.'.$_POST['last_name'];	
 	$user_name = str_replace(' ','.',$user_name);
 	
@@ -82,8 +114,9 @@ function viad_register() {
 		echo '</div>';
 
 	}
+*/
 	
-	exit;
+	exit();
 }
 add_action('wp_ajax_nopriv_viad_register', 'viad_register');
 

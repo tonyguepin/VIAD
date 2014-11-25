@@ -1,14 +1,3 @@
-<?php
-/* Template Name:Stap 5 */
-get_header();
-?>
-<section class="register">
-			<!--
-			<aside class="filter">
-			aside ja/nee?
-			</aside>
-			-->
-
 			<div class="register-titel">
 				<div class="container">
 					<h2>Aanmelden - stap 5</h2>
@@ -45,7 +34,7 @@ get_header();
 				</div>
 			</div>
 			
-			<div class="register-form">
+			<form class="register-form" method="post">
 				<div class="container">
 					<fieldset class="stap-5">
 						<p>Betaalwijze</p>
@@ -71,8 +60,8 @@ get_header();
 						</div>
 					</fieldset>	
 				</div>
-			</div>
-			<div class="register-afrekening">
+			</form>
+			<form class="register-afrekening" method="post">
 				<div class="container">
 					<fieldset class="stap-5">
 						<p>Kies uw kaart</p>
@@ -110,8 +99,8 @@ get_header();
 						<input class="cvc required" name="cvc" type="text" placeholder="CVC"/>	
 					</fieldset>	
 				</div>
-			</div>
-			<div class="register-afrekening-akkoord">
+			</form>
+			<form class="register-afrekening-akkoord" method="post">
 				<div class="container">
 					<fieldset class="stap-5">								
 							<p class="no-bold"><strong>Algemene Voorwaarden </strong><a href="#">Download PDF bestand</a></p>
@@ -122,12 +111,10 @@ get_header();
 	
 					</fieldset>	
 				</div>
-			</div>
+			</form>
 			<div class="register-volgende">
-				<a class="button register-button">Volgende stap</a>
+				<a class="button register-button" data-step="4">Vorige stap</a>
+				<a class="button register-button" data-step="6">Volgende stap</a>
 			</div>
 		</div>
-</section>
-
-<?php get_footer();?>
 

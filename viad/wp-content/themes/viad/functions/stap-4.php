@@ -1,14 +1,3 @@
-<?php
-/* Template Name:Stap 4 */
-get_header();
-?>
-<section class="register">
-			<!--
-			<aside class="filter">
-			aside ja/nee?
-			</aside>
-			-->
-
 			<div class="register-titel">
 				<div class="container">
 					<h2>Aanmelden - stap 4</h2>
@@ -136,10 +125,7 @@ get_header();
 				</div>
 			</div>
 			<div class="register-volgende">
-				<a class="button register-button">Volgende stap</a>
+				<a class="button register-button" data-step="3">Vorige stap</a>
+				<a class="button register-button" data-step="5">Volgende stap</a>
 			</div>
 		</div>
-</section>
-
-<?php get_footer();?>
-

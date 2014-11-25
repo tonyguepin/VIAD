@@ -1,14 +1,3 @@
-<?php
-/* Template Name:Stap 1 */
-get_header();
-?>
-<section class="register">
-
-			<!--
-			<aside class="filter">
-			aside ja/nee?
-			</aside>
-			-->
 
 			<div class="register-titel">
 				<div class="container">
@@ -44,33 +33,30 @@ get_header();
 				</div>
 			</div>
 			
-			<div class="register-form">
+			<form class="reg register-form" method="post">
 				<div class="container">
 					<fieldset class="stap-1">
 						<div class="registratie-opties clearfix">
 							<div class="registratie-optie">
 								<div class="circle blue">&nbsp;</div>
-								<div class="radio"><input id="i0" type="radio" name="type" value="professionals" checked="checked"/><label for="i0">Professional</label></div>
+								<div class="radio"><input id="i0" type="radio" name="type" value="professionals" <?php if($_SESSION['type'] == 'professionals') { echo 'checked="checked"'; } ?>/><label for="i0">Professional</label></div>
 							</div>
 							<div class="registratie-spacer">of</div>
 							<div class="registratie-optie">
 								<div class="circle green">&nbsp;</div>
-								<div class="radio"><input id="i1" type="radio" name="type" value="companies"/><label for="i1">Ingenieursbureau</label></div>
+								<div class="radio"><input id="i1" type="radio" name="type" value="engeneer" <?php if($_SESSION['type'] == 'engeneer') { echo 'checked="checked"'; } ?> /><label for="i1">Ingenieursbureau</label></div>
 							</div>
 							<div class="registratie-spacer">of</div>
 							<div class="registratie-optie">
 								<div class="circle red">&nbsp;</div>
-								<div class="radio"><input id="i2" type="radio" name="type" value="companies"/><label for="i2">Bedrijf / overheid</label></div>
+								<div class="radio"><input id="i2" type="radio" name="type" value="companies" <?php if($_SESSION['type'] == 'companies') { echo 'checked="checked"'; } ?> /><label for="i2">Bedrijf / overheid</label></div>
 							</div>
 						</div>					
 					</fieldset>								
 				</div>
-			</div>
+			</form>
 			<div class="register-volgende">
-				<a class="button register-button">Volgende stap</a>
+				<a class="button register-button" data-step="2">Volgende stap</a>
 			</div>
 		</div>
-</section>
-
-<?php get_footer();?>
 

@@ -1,14 +1,3 @@
-<?php
-/* Template Name:Stap 3 */
-get_header();
-?>
-<section class="register">
-			<!--
-			<aside class="filter">
-			aside ja/nee?
-			</aside>
-			-->
-
 			<div class="register-titel">
 				<div class="container">
 					<h2>Aanmelden - stap 3</h2>
@@ -46,7 +35,7 @@ get_header();
 				</div>
 			</div>
 			
-			<div class="register-form">
+			<form class="reg register-form" method="post">
 				<div class="container">
 					<fieldset class="stap-3">								
 						<div class="kvk-wrapper clearfix">
@@ -71,8 +60,8 @@ get_header();
 	
 					</fieldset>	
 				</div>
-			</div>
-			<div class="register-akkoord">
+			</form>
+			<form class="reg register-akkoord" method="post">
 				<div class="container">
 					<fieldset class="stap-3">								
 							<h3 class="white no-bold">En dan nog iets</h3>
@@ -84,12 +73,9 @@ get_header();
 	
 					</fieldset>	
 				</div>
-			</div>
+			</form>
 			<div class="register-volgende">
-				<a class="button register-button">Volgende stap</a>
+				<a class="button register-button" data-step="2">Vorige stap</a>
+				<a class="button register-button" data-step="4">Volgende stap</a>
 			</div>
 		</div>
-</section>
-
-<?php get_footer();?>
-

@@ -185,6 +185,7 @@ $(document).ready(function() {
 			/* Ajax check username */
 		});
 
+/*
 		$('.register-button').click(function() {
 			$('.required').removeClass('empty');
 			$('.required').each(function() {
@@ -215,12 +216,30 @@ $(document).ready(function() {
 					}
 				}); 
  			}
-
-
-		
-		
 		});
 
+*/
+		$(document).on('click', '.register-button', function(e) {
+			e.preventDefault();
+			var step = $(this).data('step');
+			var action = 'viad_register_step';
+			if(step == 6) {
+				action = 'viad_register';
+			}
+			$('.reg').ajaxSubmit({
+				url: ajaxurl, 
+			    delegation: true,
+			    data :{
+			    	action:action,
+			    	step:step
+			    },
+				complete: function(xhr) {
+
+	 				$('section.register').html(xhr.responseText);
+	 				
+				}
+			}); 
+		});
 
 
 		/////////////////////

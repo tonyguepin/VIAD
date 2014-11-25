@@ -283,7 +283,7 @@ section.register .register-volgende a.button {
     text-transform: none;
     line-height: 20px;
     transition: background-color 0.2s ease 0s;
-    padding: 20px 0px;
+    padding: 10px 0px;
     max-width: 180px;
     margin: 10px auto;
 }
