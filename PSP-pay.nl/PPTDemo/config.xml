@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <!-- You can find your API token here: https://admin.pay.nl/my_merchant (on the bottom) -->
+    <apitoken></apitoken>
+    <!-- You can find your service id here: https://admin.pay.nl/programs/programs (The serviceId starts with SL- ) --> 
+    <service_id></service_id>   
+</root>

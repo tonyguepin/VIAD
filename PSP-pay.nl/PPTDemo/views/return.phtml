@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/default.css" />
+    </head>
+    <body>
+        <div class="content">
+
+            <?php
+            if (!empty($error)) {
+                echo "<div class='error'>";
+                echo $error;
+                echo "</div>";
+            }
+            ?>
+
+            <?php if (!empty($paymentDetails)) { ?>    
+                <h1>TransactieData</h1>
+                <div class="border">
+                    <table class='dataTable'>
+                        <tr>
+                            <th>Veld</th>
+                            <th>Waarde</th>
+                        </tr>
+                        <?php
+                        foreach ($paymentDetails as $key => $value) {
+                            if ($key == 'state') {
+                                $value = $value . ' (' . Pay_Helper::getStateText($value) . ')';
+                            }
+                            echo "<tr><td>$key</td><td>$value</td></tr>";
+                        }
+                        ?>
+                    </table>                   
+                </div>        
+            <?php } ?>
+            <?php if (!empty($statsDetails)) { ?>    
+                <h1>Stats data</h1>
+                <div class="border">
+                    <table class='dataTable'>
+                        <tr>
+                            <th>Veld</th>
+                            <th>Waarde</th>
+                        </tr>
+                        <?php
+                        foreach ($statsDetails as $key => $value) {
+
+                            echo "<tr><td>$key</td><td>$value</td></tr>";
+                        }
+                        ?>
+                    </table>
+
+                </div>        
+
+            <?php } ?>
+            <?php if (!empty($enduser)) { ?>    
+                <h1>Enduser</h1>
+                <div class="border">
+                    <table class='dataTable'>
+                        <tr>
+                            <th>Veld</th>
+                            <th>Waarde</th>
+                        </tr>
+    <?php
+    foreach ($enduser as $key => $value) {
+        if (is_array($value)) {
+            $tmpValue = '';
+            foreach ($value as $key2 => $value2) {
+                $tmpValue .= $key2 . ' = ' . $value2 . '<br />';
+            }
+            $value = $tmpValue;
+        }
+        echo "<tr><td>$key</td><td>$value</td></tr>";
+    }
+    ?>
+                    </table>
+
+                </div>        
+
+<?php } ?>
+            <?php
+            if (!empty($saleData)) {
+                $orderData = array();
+                ?>    
+                <h1>Saledata</h1>
+                <div class="border">
+                    <table class='dataTable'>
+                        <tr>
+                            <th>Veld</th>
+                            <th>Waarde</th>
+                        </tr>
+    <?php
+    foreach ($saleData as $key => $value) {
+        if ($key == 'orderData') {
+            $orderData = $value;
+        } else {
+            if (is_array($value)) {
+                $tmpValue = '';
+                foreach ($value as $key2 => $value2) {
+                    $tmpValue .= $key2 . ' = ' . $value2 . '<br />';
+                }
+                $value = $tmpValue;
+            }
+            echo "<tr><td>$key</td><td>$value</td></tr>";
+        }
+    }
+    ?>
+                    </table>
+
+                </div>      
+<?php } ?>
+            <?php
+            if (isset($orderData) && !empty($orderData)) {
+                $first = true;
+                $arrColumns = array();
+                $rows = '';
+                foreach ($orderData as $orderRow) {
+                    if ($first) {
+                        $arrColumns = array_keys($orderRow);
+                    }
+                    $first = false;
+                    $rows .= "<tr>";
+                    foreach ($orderRow as $column => $value) {
+                        $rows .= "<td>$value</td>";
+                    }
+                    $rows .= '</tr>';
+                }
+                $columns = "<tr>";
+                foreach($arrColumns as $column){
+                    $columns .= "<th>$column</th>";
+                }
+                $columns .= "</tr>"; 
+                ?>
+                <h1>Order data</h1>
+                <div class="border">
+                    <table class='dataTable'>
+                        <?php
+                        echo $columns;
+                        echo $rows;
+                        ?>
+                    </table>
+                </div>
+                <a class='button' href="index.php">Terug</a><br />
+            <?php } ?>
+        </div>
+    </body>
+</html>

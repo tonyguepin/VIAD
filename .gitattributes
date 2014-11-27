@@ -28,6 +28,31 @@ Doc/scenarios/VIAD[!!-~]-[!!-~]Org[!!-~]beheer.xls -text
 Doc/scenarios/VIAD[!!-~]-[!!-~]Prof[!!-~]beheer.xls -text
 Doc/scenarios/scenario's[!!-~]VIAD.xls -text
 Doc/viad_overzicht_programmeren.xls -text
+PSP-pay.nl/PPT[!!-~]Demo[!!-~]Documentatie.pdf -text svn_keywords
+PSP-pay.nl/PPTDemo/config.xml svn_keywords
+PSP-pay.nl/PPTDemo/css/default.css svn_keywords
+PSP-pay.nl/PPTDemo/exchange.php svn_keywords
+PSP-pay.nl/PPTDemo/img/add.png -text svn_keywords
+PSP-pay.nl/PPTDemo/img/apidemo.png -text svn_keywords
+PSP-pay.nl/PPTDemo/img/cross.png -text svn_keywords
+PSP-pay.nl/PPTDemo/img/option_down.png -text svn_keywords
+PSP-pay.nl/PPTDemo/img/pay_nl_logo.png -text svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Autoload.php svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Pay/Api.php svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Pay/Api/Exception.php svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Pay/Api/Getservice.php svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Pay/Api/Info.php svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Pay/Api/Start.php svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Pay/Config.php svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Pay/Exception.php svn_keywords
+PSP-pay.nl/PPTDemo/includes/classes/Pay/Helper.php svn_keywords
+PSP-pay.nl/PPTDemo/index.php svn_keywords
+PSP-pay.nl/PPTDemo/js/libs/jquery/jquery.js svn_keywords
+PSP-pay.nl/PPTDemo/return.php svn_keywords
+PSP-pay.nl/PPTDemo/views/index.phtml svn_keywords
+PSP-pay.nl/PPTDemo/views/return.phtml svn_keywords
+PSP-pay.nl/Snel[!!-~]aan[!!-~]de[!!-~]slag[!!-~]met[!!-~]Pay.nl.odt -text svn_keywords
+PSP-pay.nl/Zo[!!-~]voegt[!!-~]u[!!-~]uw[!!-~]website[!!-~]toe.pdf -text svn_keywords
 viad/wp-admin/images/align-center-2x.png -text
 viad/wp-admin/images/align-center.png -text
 viad/wp-admin/images/align-left-2x.png -text

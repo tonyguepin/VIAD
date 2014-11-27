@@ -1,0 +1,240 @@
+<html>
+    <head>
+        <script type="text/javascript" src="js/libs/jquery/jquery.js"></script>
+        <script type="text/javascript">
+            var paymentOptions = <?php echo json_encode(@$paymentOptions); ?>;
+            var bedrag = 100;
+            var optionId = '';
+            var optionSubId = '';
+<?php
+if (isset($_POST['bedrag'])) {
+    echo 'bedrag = "' . $_POST['bedrag'] . '";';
+}
+if (isset($_POST['optionId'])) {
+    echo 'optionId = "' . $_POST['optionId'] . '";';
+}
+if (isset($_POST['optionSubId'])) {
+    echo 'optionSubId = "' . $_POST['optionSubId'] . '";';
+}
+?>
+            jQuery(document).ready(function() {
+                jQuery('#optionId').change(function() {
+                    jQuery('#optionSubId').html('');
+                    if (paymentOptions != undefined && paymentOptions[jQuery(this).val()] != undefined) {
+                        var paymentOption = paymentOptions[jQuery(this).val()];
+                        if (paymentOption.subList != undefined) {
+                            var subOptions = "";
+                            subOptions += "<option value=''>Selecteer een bank</option>";
+                            jQuery.each(paymentOption.subList, function(id, subItem) {
+                                subOptions += "<option value='" + subItem.id + "'>" + subItem.name + "</option>";
+                            });
+                            jQuery('#optionSubId').html(subOptions);
+                            jQuery('.bank').show();
+                        } else {
+                            jQuery('.bank').hide();
+                        }
+                    } else {
+                        jQuery('.bank').hide();
+                    }
+                });
+                jQuery('#bedrag').val(bedrag);
+                jQuery('#optionId').val(optionId);
+
+
+                jQuery('#optionId').change();
+                jQuery('#optionSubId').val(optionSubId);
+                jQuery('#bedrag').keyup(function() {
+                    var bedrag = parseFloat(jQuery('#bedrag').val() / 100).toFixed(2);
+                    jQuery('#bedragLabel').html('&euro; ' + bedrag);
+                });
+
+                jQuery('#bedrag').keyup();
+            });
+            function removeTransferDataRow(button) {
+                if (jQuery('.transferDataRow').length > 1) {
+                    jQuery(button).parent().parent().remove();
+                } else {
+                    jQuery('.transferDataRow input').val('');
+                }
+            }
+            function addTransferDataRow() {
+                jQuery('.transferDataRow:last').clone().insertAfter(jQuery('.transferDataRow:last'));
+                jQuery('.transferDataRow:last input').val('');
+            }
+            function removeProductRow(button) {
+                if (jQuery('.productRow').length > 1) {
+                    jQuery(button).parent().parent().remove();
+                } else {
+                    jQuery('.productRow input').val('');
+                }
+            }
+            function addProductRow() {
+                jQuery('.productRow:last').clone().insertAfter(jQuery('.productRow:last'));
+                jQuery('.productRow:last input').val('');
+            }
+            function toggleAdvanced() {
+                jQuery('.extraData').slideToggle();
+            }
+            function toggleOrderData() {
+                jQuery('.orderData').slideToggle();
+            }
+        </script>
+        <link rel="stylesheet" href="css/default.css" />
+    </head>
+    <body>
+        <div class='backgroundLeft'></div>
+        <div class='backgroundRight'></div>
+        <div class="content">
+            <?php
+            if (!empty($error)) {
+                echo "<div class='error'>";
+                echo $error;
+                echo "</div>";
+            }
+            ?>
+            <h1>Pay.nl API Demo</h1>            
+            <form method="post">
+                <div class="border">
+                    <input type="hidden" name="action" value="startTransaction" />
+                    <dl>
+                        <dt>Bedrag in centen</dt>
+                        <dd>
+                            <input id="bedrag" type="text" name="bedrag" /><span id="bedragLabel">&euro; 1,00</span>
+                        </dd>
+                        <dt>Betaalmethode</dt>
+                        <dd>
+                            <select id="optionId" name="optionId">
+                                <option value="">Selecteer een betaalmethode</option>
+                                <?php
+                                foreach ($paymentOptions as $paymentOption) {
+                                    echo "<option value='" . $paymentOption['id'] . "'>" . $paymentOption['name'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </dd>
+                        <dt class="bank" style="display:none;">Bank<dt>
+                        <dd class="bank" style="display:none;">
+                            <select id="optionSubId" name="optionSubId"></select>
+                        </dd>
+
+                        <dd><input type="submit" value="Transactie aanmaken" /></dd>
+                    </dl>
+
+                </div>
+                <a class='moreOptions' href="#" onclick="toggleAdvanced();
+                        return false;">Meer opties</a>
+                
+
+                <h1 class="extraData">Extra data</h1>
+                <div class="border extraData">
+                    <table>
+                        <tr>
+                            <th>Altijd beschikbaar</th>
+                            <th>Vanaf pakket Professional</th>
+                            <th>Vanaf pakket Business</th>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <input type="text" name="description" placeholder="Omschrijving" /><br />
+                                <input type="text" name="extra1" placeholder="Extra1" /><br />
+                                <input type="text" name="promotorId" placeholder="PromotorId" /><br />
+                            </td>
+                            <td style="vertical-align: top;">
+                                <input type="text" name="extra2" placeholder="Extra2" />
+                                <input type="text" name="info" placeholder="Info"  />
+                                <input type="text" name="object" placeholder="Object"  />
+                            </td>
+                            <td style="vertical-align: top;">
+                                <input type="text" name="extra3" placeholder="Extra3"  />
+                                <input type="text" name="tool" placeholder="Tool"  />
+                                <input type="text" name="domain_id" placeholder="DomainId"  />
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <h1 class="extraData">Transfer data</h1>
+                <div class="border extraData transferData">
+                    <table>
+                        <tr>
+                            <th>Key</th>
+                            <th>Waarde</th>
+                            <th><a href="#" onclick="addTransferDataRow();
+                                    return false;"><img src="img/add.png" />Toevoegen</a></th>
+                        </tr>
+                        <tr class="transferDataRow">
+                            <td><input type="text" placeholder="Key" name="transferData[key][]" /></td>
+                            <td><input type="text" placeholder="Waarde" name="transferData[value][]" /></td>
+                            <td><a href="#" onclick="removeTransferDataRow(this);
+                                    return false;"><img src="img/cross.png" />Verwijderen</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <a class='moreOptions' href="#" onclick="toggleOrderData();
+                        return false;">Order data</a>
+                <h1 class="orderData">Klant data</h1>
+                <div class="border orderData customerData">
+                    <p>Klantdata meesturen, dit is verplicht voor afterpay transacties<br />
+                    <input type="text" placeholder="Ordernummer" name="orderNumber"/><br />
+                    <input type="text" placeholder="Voorletters" name="enduser[initials]"/>
+                    <input type="text" placeholder="Achternaam" name="enduser[lastName]"/>
+                    <br />
+                    <input type="text" placeholder="Telefoon" name="enduser[phoneNumber]"/>
+                    <br />
+                    <input type="text" placeholder="Email" name="enduser[emailAddress]"/>
+                    </p>
+                    <p>
+                        Bezorg adres<br />
+                        <input type="text" placeholder="Straat" name="enduser[address][streetName]"/>
+                        <input type="text" placeholder="Huisnummer" name="enduser[address][streetNumber]"/><br />
+                        <input type="text" placeholder="Postcode" name="enduser[address][zipCode]"/>
+                        <input type="text" placeholder="Plaats" name="enduser[address][city]"/><br />
+                        <input type="text" placeholder="Land(ISO 3166-1)" name="enduser[address][countryCode]"/>
+                    </p>
+                    <p>
+                        Factuur adres<br />
+                        <input type="text" placeholder="Voorletters" name="enduser[invoiceAddress][initials]"/>
+                        <input type="text" placeholder="Achternaam" name="enduser[invoiceAddress][lastName]"/><br />
+                        <input type="text" placeholder="Straat" name="enduser[invoiceAddress][streetName]"/>
+                        <input type="text" placeholder="Huisnummer" name="enduser[invoiceAddress][streetNumber]"/><br />
+                        <input type="text" placeholder="Postcode" name="enduser[invoiceAddress][zipCode]"/>
+                        <input type="text" placeholder="Plaats" name="enduser[invoiceAddress][city]"/><br />
+                        <input type="text" placeholder="Land(ISO 3166-1)" name="enduser[invoiceAddress][countryCode]"/>
+                    </p>
+                </div>
+                <h1 class="orderData">Product data</h1>
+                <div class="border orderData productData">
+                    Verplicht voor afterpay transacties<br />
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Naam</th>
+                            <th>Prijs(centen)</th>
+                            <th>Aantal</th>
+                            <th><a href="#" onclick="addProductRow(); return false;"><img src="img/add.png" />Toevoegen</a></th>
+                        </tr>
+                        <tr class="productRow">
+                            <td><input placeholder="Nummer" class="productId" type="text" name="products[id][]" /></td>
+                            <td><input placeholder="Product naam" class="description" type="text" name="products[description][]" /></td>
+                            <td><input placeholder="Incl. btw" class="price" type="text" name="products[price][]" /></td>
+                            <td><input placeholder="Aantal" class="quantity" type="text" name="products[quantity][]" /></td>
+                            <td><a href="#" onclick="removeProductRow(this);return false;"><img src="img/cross.png" />Verwijderen</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
+            <?php if (!empty($transaction)) { ?>
+                <div class="startTransaction">
+                    Transactie aangemaakt!<br />
+                    TransactieId: <?php echo $transaction['transactionId']; ?><br /><br />
+
+                    Return url: <a target="new" href="<?php echo $returnUrl . '?orderId=' . $transaction['transactionId']; ?>"><?php echo $returnUrl . '?orderId=' . $transaction['transactionId']; ?></a><br />             
+                    Exchange url: <a target="new" href="<?php echo $exchangeUrl . '?order_id=' . $transaction['transactionId']; ?>"><?php echo $exchangeUrl . '?order_id=' . $transaction['transactionId']; ?></a><br /><br />
+
+                    Betaallink: <a href="<?php echo $transaction['paymentURL']; ?>"><?php echo $transaction['paymentURL']; ?></a><br />   
+                </div>  
+                <a class='button' href='<?php echo $transaction['paymentURL']; ?>'>Betaling starten</a><br />
+            <?php } ?>
+        </div>
+    </body>
+</html>

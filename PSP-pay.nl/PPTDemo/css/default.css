@@ -1,0 +1,192 @@
+*{
+    font-size: 10pt;
+    font-family: 'Segoe UI',Tahoma,sans-serif;
+    color: #666666;
+}
+h1{
+    color: #333333;
+    font-weight: normal;
+    font-size: 16pt;
+}
+.content{
+    margin-left: auto;
+    margin-right: auto;
+    padding:10px;
+    text-align: left;
+    background-color: #FFFFFF;
+    height: 100%;
+    width:800px;
+}
+.form dl dt{
+    margin-bottom:10px;
+
+}
+.error{
+    border:2px #ff3333 solid;
+    background-color: #ff9999;
+    color:#FFFFFF;
+    padding:5px;
+    border-radius: 8px;
+    padding:10px;
+    padding-left: 15px;
+
+}
+.startTransaction{
+    border:2px #99ff99 solid;
+    background-color: #ccffcc;
+    padding: 5px;    
+    border-radius: 8px;
+    margin-top:15px;
+}
+
+.border{
+    margin:0px auto;
+    text-align:left;
+    position: relative;
+    background-color: #FFFFFF;
+    padding:10px;
+    padding-left: 15px;
+    padding-top:15px;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+}
+
+table.dataTable{
+    border-spacing: 0px;
+}
+table.dataTable td, table.dataTable th{
+    padding:2px;
+    padding-left: 10px;
+    vertical-align: top;
+}
+
+table.dataTable th{
+    text-align: left;
+    background-color: #096A9F;
+    color:#FFFFFF;
+}
+table.dataTable th:first-child{
+    width: 250px;
+}
+table.dataTable{
+    width: 100%;
+}
+table.dataTable tr{
+    height:30px;
+}
+table.dataTable tr:nth-child(odd){
+    background-color: #F5F5F5; 
+}
+table.dataTable tr:hover{
+    background-color: #F9A55C; 
+}
+
+
+form input, form select{
+    font-size: 15px;
+    height: 28px;
+    padding: 4px;
+    width: 250px;
+    border: 1px solid #BBBBBB;
+    border-radius: 4px;
+    color: #555555;
+    margin-bottom:4px;
+}
+
+form input[type=submit], .button{
+    margin-top:30px;
+    background-color: #EC6F00;
+    border: 0;
+    border-radius: 6px 1px;
+    padding:40px;
+    padding-top:15px;
+    color: #FFFFFF;
+
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 100;
+}
+.button{
+    text-decoration: none;
+    padding:15px;
+    margin-top:20px;
+    text-align: center;
+    display:block;
+}
+form input[type=submit]{
+    position: absolute;
+    bottom: 27px;
+    right: 30px;
+}
+form input[type=submit]:hover, .button:hover{
+    background-color: #DD6800;
+}
+.backgroundLeft{
+    background-position: left top;
+    background-repeat: no-repeat;   
+    background-size: contain;
+    position:fixed;
+    left:0px;
+    top:0px;
+    height: 100%;    
+    width: 285px;
+    background-image: url("../img/pay_nl_logo.png");
+    z-index: 0;
+}
+.backgroundRight{
+    background-position: right top;
+    background-repeat: no-repeat;   
+    background-size: contain;
+    position:fixed;
+    right:0px;
+    top:0px;
+    height: 100%;    
+    width: 285px;
+    background-image: url("../img/apidemo.png");
+    z-index: 0;
+}
+.extraData, .orderData{
+    display: none;
+}
+.transferData a, .productData a{
+    text-decoration: none;
+    vertical-align: middle;
+
+}
+.transferDataRow a, .productRow a{
+        display: block;
+        margin-bottom:5px;
+}
+
+.transferData a img, .productData a img{
+    margin-bottom: -4px;
+    margin-right: 3px;
+    
+}
+#bedragLabel{
+    margin-left:5px;
+}
+.moreOptions{
+    margin-top:15px;
+    display: block;
+    width: 775px;
+    background-color: #DDDDDD;
+    border: 1px #BBBBBB solid;
+    border-radius: 8px;
+  
+    padding: 5px;
+    padding-right: 20px;
+    position: relative;
+    background-position: right;
+    background-repeat: no-repeat;   
+   
+    background-image: url("../img/option_down.png");
+    text-align: left;
+    font-size: 15px;
+}
+.productRow .productId, .productRow .price, .productRow .quantity, .productData .vat{
+    width:100px;
+}
+.productRow .description{
+    width:300px;
+}
