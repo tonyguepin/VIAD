@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <!-- You can find your API token here: https://admin.pay.nl/my_merchant (on the bottom) -->
-    <apitoken></apitoken>
+    <apitoken>dfc7d5119dd5674c6336946502044e3aa589cff9</apitoken>
     <!-- You can find your service id here: https://admin.pay.nl/programs/programs (The serviceId starts with SL- ) --> 
-    <service_id></service_id>   
+    <service_id>SL-1883-1370</service_id>   
+
+    <!-- Url waarheen na doorlopen betaling door gebruiker -->
+    <return_url>return.php</return_url>
+    <!-- Url aanroep door pay.nl na verwerken betaling (asynchroon) -->
+    <exchange_url>exchange.php</exchange_url>
+
 </root>

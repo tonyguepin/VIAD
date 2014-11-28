@@ -98,7 +98,34 @@ class Pay_Helper {
     public static function sortPaymentOptions($paymentOptions){
         uasort($paymentOptions, 'sortPaymentOptions');
         return $paymentOptions;
-    }   
+    }
+    
+    public static function cleanupPaymentOptions($options)
+    {
+    	//Resultaat opschonen
+    	$basePath = $options['service']['basePath'];
+    	$paymentOptions = array();
+    	foreach ($options['paymentOptions'] as $paymentOption) {
+    		$tmpPaymentOption = array();
+    		$tmpPaymentOption['id'] = $paymentOption['id'];
+    		$tmpPaymentOption['name'] = $paymentOption['visibleName'];
+    		$tmpPaymentOption['image'] = $basePath . $paymentOption['path'] . $paymentOption['img'];
+    		if (!empty($paymentOption['paymentOptionSubList'])) {
+    			$tmpPaymentOption['subList'] = array();
+    			foreach ($paymentOption['paymentOptionSubList'] as $subItem) {
+    				$tmpPaymentOption['subList'][$subItem['id']] = array(
+    						'id' => $subItem['id'],
+    						'name' => $subItem['visibleName'],
+    						'img' => $basePath . $subItem['path'] . $subItem['img'],
+    				);
+    			}
+    		}
+    		$paymentOptions[$tmpPaymentOption['id']] = $tmpPaymentOption;
+    	}
+    	//paymentOptions op naam sorteren
+    	return self::sortPaymentOptions($paymentOptions);
+    }
+    
 }
 function sortPaymentOptions($a,$b){
     return strcmp($a['name'], $b['name']);

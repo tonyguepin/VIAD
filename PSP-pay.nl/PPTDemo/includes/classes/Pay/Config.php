@@ -12,6 +12,9 @@ class Pay_Config{
    } 
 
    public function __get($name) {
-       return (string) $this->_objXml->$name;
+   	if(empty($this->_objXml->$name)){
+   		throw new Pay_Exception(sprintf("`%s' niet geset, deze kunt u instellen in config.xml", $name));
+   	}
+    return (string) $this->_objXml->$name;
    }
 }
