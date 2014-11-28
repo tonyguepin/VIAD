@@ -39,7 +39,7 @@
 						<div class="registratie-opties clearfix">
 							<div class="registratie-optie">
 								<div class="circle blue">&nbsp;</div>
-								<div class="radio"><input id="i0" type="radio" name="type" value="professionals" <?php if($_SESSION['type'] == 'professionals') { echo 'checked="checked"'; } ?>/><label for="i0">Professional</label></div>
+								<div class="radio"><input id="i0" type="radio" name="type" value="professionals" <?php if($_SESSION['type'] == 'professionals' || $_SESSION['type'] == '') { echo 'checked="checked"'; } ?>/><label for="i0">Professional</label></div>
 							</div>
 							<div class="registratie-spacer">of</div>
 							<div class="registratie-optie">

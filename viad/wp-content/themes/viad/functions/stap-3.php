@@ -40,12 +40,12 @@
 					<fieldset class="stap-3">								
 						<div class="kvk-wrapper clearfix">
 							<p>KvK nummer *</p>
-							<input class="required" name="name" type="text" placeholder="KvK nummer	"/>
+							<input class="required" name="pm_kvk" type="text" placeholder="KvK nummer	"/>
 						</div>
 						<div class="radio-stap-3">
 							<p>VAR *</p>
-							<div class="radio"><input id="r1" name="pm_var" type="radio" value="ja"/><label for="r1">Ja</label></div>
-							<div class="radio"><input id="r2" name="pm_var" type="radio" value="nee"/><label for="r2">Nee</label></div>
+							<div class="radio"><input class="required" id="r1" name="pm_var" type="radio" value="ja"/><label for="r1">Ja</label></div>
+							<div class="radio"><input class="required" id="r2" name="pm_var" type="radio" value="nee"/><label for="r2">Nee</label></div>
 						</div>
 						<div class="radio-stap-3">
 							<p>VOG (Verklaring Omtrent Gedrag) <a href="#">Hoe vraag ik een VOG aan?</a></p>
@@ -67,8 +67,8 @@
 							<h3 class="white no-bold">En dan nog iets</h3>
 							<p class="white no-bold">Bij VIAD vinden we eerlijkheid en transparantie belangrijk. Dit is dan ook een voorwaarde om toegelaten te kunnen worden bij VIAD. Door akkoord te gaan met het VIAD-keurmerk beloof je je profiel en competenties naar waarheid te hebben ingevuld. Je hanteert het principe van afspraak = afspraak. Dit mogen we van jou verwachten maar dit mag jij natuurlijk ook van ons en onze klanten verwachten.</p>
 						<div class="radio-stap-3">
-							<div class="radio white"><input id="r7" name="pm_akkoord" type="radio" value="ja"/><label for="r7">Ja, dat snap ik en ik ga hiermee akkoord.</label></div>
-							<div class="radio white"><input id="r8" name="pm_akkoord" type="radio" value="nee"/><label for="r8">Nee </label></div>
+							<div class="radio white"><input id="r7"  class="required" name="pm_akkoord" type="radio" value="ja"/><label for="r7">Ja, dat snap ik en ik ga hiermee akkoord.</label></div>
+							<div class="radio white"><input id="r8"  class="required" name="pm_akkoord" type="radio" value="nee"/><label for="r8">Nee </label></div>
 						</div>
 	
 					</fieldset>	

@@ -26,10 +26,7 @@ function viad_db_main() {
 	
 	return $html;
 }
-function viad_db_payment() {
-	$html .= '<h2>Betalen</h2>';
-	return $html;
-}
+
 function viad_db_reviews() {
 	
 	// over mij	

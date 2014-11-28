@@ -218,27 +218,60 @@ $(document).ready(function() {
  			}
 		});
 
-*/
+*/		
+
+		var step = 0;
 		$(document).on('click', '.register-button', function(e) {
 			e.preventDefault();
-			var step = $(this).data('step');
 			var action = 'viad_register_step';
 			if(step == 6) {
 				action = 'viad_register';
 			}
-			$('.reg').ajaxSubmit({
-				url: ajaxurl, 
-			    delegation: true,
-			    data :{
-			    	action:action,
-			    	step:step
-			    },
-				complete: function(xhr) {
-
-	 				$('section.register').html(xhr.responseText);
-	 				
+			
+			
+			if($(this).text() == 'Volgende stap') {
+				$('.required').removeClass('empty');
+				$('.required').each(function() {
+					if(!$(this).val()) {
+						$(this).addClass('empty');
+					}
+					if($(this).val() == 'Nee') {
+						console.log($(this));
+						$(this).addClass('empty');
+					}
+				});
+				if($('input[name="password_again"]').val() != $('input[name="password"]').val()) {
+					$('input[name="password_again"]').addClass('empty');
 				}
-			}); 
+			    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			    if(re.test($('input[name="email"]').val()) == false) {
+			    	$('input[name="email"]').addClass('empty');
+			    }
+ 			}
+			step = $(this).data('step');
+
+			console.log($(this).data('step') , step);
+
+
+ 			if($('.empty').length == 0) {
+				
+				console.log('ajaxsubmit');
+				
+				$('.reg').ajaxSubmit({
+					url: ajaxurl, 
+				    delegation: true,
+				    data :{
+				    	action:action,
+				    	step:step
+				    },
+					complete: function(xhr) {
+	
+		 				$('section.register').html(xhr.responseText);
+		 				
+					}
+				}); 
+	
+			}
 		});
 
 

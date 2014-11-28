@@ -8,6 +8,7 @@ include 'functions/display.php';
 include 'functions/register.php';
 include 'functions/dashboard.php';
 include 'functions/projects.php';
+include 'functions/betalen.php';
 
 
 function viad_get_attachment_image_src($id, $size) {
@@ -91,6 +92,16 @@ function viad_get_user_type() {
  	$profile_id = get_user_meta($id, 'profile_id');
  	$profile = get_post($profile_id[0]);
  	return $profile->post_type;
+}
+
+function viad_get_user_role() {
+	$id = get_current_user_id();
+
+	 $user_info = get_userdata($id);
+	 $role = implode(', ', $user_info->roles);
+	
+	return $role;
+
 }
 
 

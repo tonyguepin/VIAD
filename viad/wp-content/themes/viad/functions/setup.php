@@ -26,10 +26,9 @@ function viad_custom_roles() {
         'delete_posts' => false
     );
 	
-	add_role('member_basic', 'Basic member' , $capabilities);
+	add_role('member_basis', 'Basis member' , $capabilities);
 	add_role('member_plus', 'Plus member' , $capabilities);
-	add_role('member_premium', 'Premium member' , $capabilities);
-	add_role('member_company', 'Premium company' , $capabilities);
+	add_role('member_custom', 'Custom member' , $capabilities);
 	
 	remove_role( 'editor' );
 	remove_role( 'author' );

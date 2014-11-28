@@ -2,6 +2,7 @@
 
 function viad_start_session() {
     if(!session_id()) {
+	    session_set_cookie_params(3600);
         session_start();
     }
 }
@@ -9,12 +10,16 @@ add_action('init', 'viad_start_session', 1);
 
 function viad_register_step($step = 1) {
 	
+//	session_destroy();
 	
 	foreach($_POST as $key => $val){
 		if($key != 'step' && $key != 'action') {
 			$_SESSION[$key] = $val;
 		}
 	}
+	echo '<br/>Post<br/>';
+	print_r($_POST);
+	echo '<br/>Session<br/>';
 	print_r($_SESSION);
 		
 	
