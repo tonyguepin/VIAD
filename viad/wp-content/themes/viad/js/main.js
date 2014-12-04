@@ -129,7 +129,9 @@ $(document).ready(function() {
 		/////////////////////
 		// UPDATE USERINFO 
 		/////////////////////
-		if($('.logged-in').length > 0 /* && !$('.switch').length */) {
+		
+/*
+		if($('.logged-in').length > 0) {
 			var update = setInterval(function() {
 			    $.ajax({
 			        url: ajaxurl,
@@ -147,6 +149,7 @@ $(document).ready(function() {
 			    });
 			}, 15000);
 		}
+*/
 
 				
 		/////////////////////
